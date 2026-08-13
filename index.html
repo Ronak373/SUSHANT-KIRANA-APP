@@ -1502,7 +1502,7 @@ return;
 }
 
 let upi=
-"upi://pay?pa=sushantkirana@upi"
+"upi://pay?pa=Q450673367@ybl"
 +"&pn=Sushant%20Kirana"
 +"&am="+currentUdhar.amount
 +"&cu=INR";
@@ -1590,78 +1590,86 @@ box.appendChild(div);
 
 
 /* ================= PRODUCTS ================= */
+function editProduct(id){
 
-function openProducts(){
+  let p = products.find(x => x.id === id);
 
-show("products");
+  if(!p){
+    alert("Product सापडला नाही.");
+    return;
+  }
 
-displayProducts();
+  let kg = prompt(
+    "1 KG Price ₹",
+    p.kg || ""
+  );
 
+  if(kg === null) return;
+
+  let gm = prompt(
+    "500 GM Price ₹",
+    p.gm || ""
+  );
+
+  if(gm === null) return;
+
+  let piece = prompt(
+    "Piece Price ₹",
+    p.piece || ""
+  );
+
+  if(piece === null) return;
+
+  let stock = prompt(
+    "Stock Quantity",
+    p.stock || 0
+  );
+
+  if(stock === null) return;
+
+  p.kg = Number(kg) || 0;
+  p.gm = Number(gm) || 0;
+  p.piece = Number(piece) || 0;
+  p.stock = Number(stock) || 0;
+
+  saveData();
+
+  alert("✅ Product updated successfully!");
+
+  displayProducts();
+}
+  
+function deleteProduct(id){
+
+  let p = products.find(x => x.id === id);
+
+  if(!p){
+    return;
+  }
+
+  let confirmDelete = confirm(
+    "❗ " + p.name +
+    " delete करायचा आहे का?"
+  );
+
+  if(!confirmDelete){
+    return;
+  }
+
+  products = products.filter(
+    x => x.id !== id
+  );
+
+  saveData();
+
+  alert(
+    "🗑️ " + p.name +
+    " deleted successfully!"
+  );
+
+  displayProducts();
 }
 
-function displayProducts(){
-
-let q=
-document
-.getElementById("stockSearch")
-.value
-.toLowerCase();
-
-let box=
-document
-.getElementById("productList");
-
-box.innerHTML="";
-
-products
-.filter(p=>
-p.name
-.toLowerCase()
-.includes(q)
-)
-.forEach(function(p){
-
-let div=
-document.createElement("div");
-
-div.className="product";
-
-div.innerHTML=`
-
-<div class="product-name">
-${p.name}
-</div>
-
-Barcode:
-${p.barcode || "N/A"}
-
-<br>
-
-1 KG:
-₹${p.kg || "-"}
-
-<br>
-
-500 GM:
-₹${p.gm || "-"}
-
-<br>
-
-Piece:
-₹${p.piece || "-"}
-
-<br>
-
-Stock:
-${p.stock || 0}
-
-`;
-
-box.appendChild(div);
-
-});
-
-}
 
 
 /* ================= BILLS ================= */
