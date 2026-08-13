@@ -923,22 +923,44 @@ const screens=[
 "sales"
 ];
 
-function showScreen(id){
+window.showScreen = function(id){
 
-screens.forEach(s=>{
+  const screens = [
+    "welcome",
+    "login",
+    "customerLogin",
+    "customerDashboard",
+    "ownerDashboard",
+    "addProduct",
+    "priceDiary",
+    "billing",
+    "quickAdd",
+    "payment",
+    "udharCustomer",
+    "udharBook",
+    "udharMessage",
+    "products",
+    "bills",
+    "sales"
+  ];
 
-const el=document.getElementById(s);
+  screens.forEach(function(screen){
 
-if(el) el.classList.add("hidden");
+    const element = document.getElementById(screen);
 
-});
+    if(element){
+      element.classList.add("hidden");
+    }
 
-const target=document.getElementById(id);
+  });
 
-if(target)
-target.classList.remove("hidden");
+  const target = document.getElementById(id);
 
-}
+  if(target){
+    target.classList.remove("hidden");
+  }
+
+}; 
 
 
 /* LOGIN */
@@ -950,7 +972,7 @@ showScreen("ownerDashboard");
 function logout(){
 stopScanner();
 cart=[];
-showScreen("welcome");
+window.showScreen("welcome");
 }
 
 function backOwner(){
