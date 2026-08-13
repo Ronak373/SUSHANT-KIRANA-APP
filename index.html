@@ -188,7 +188,120 @@ margin-top:10px;
 overflow:hidden;
 border-radius:15px;
 }
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import {
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyD_oqywjIsPF38gXRbczqRiPVJCTrWbSE0",
+  authDomain: "sushant-store.firebaseapp.com",
+  projectId: "sushant-store",
+  storageBucket: "sushant-store.firebasestorage.app",
+  messagingSenderId: "766656826878",
+  appId: "1:766656826878:web:12cfb77fc581559e9bc4af"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+let confirmationResult = null;
+let recaptchaVerifier = null;
+
+window.openCustomerLogin = function () {
+  document.querySelectorAll(".card").forEach(x => x.classList.add("hidden"));
+  document.getElementById("customerLogin").classList.remove("hidden");
+
+  setTimeout(() => {
+    if (!recaptchaVerifier) {
+      recaptchaVerifier = new RecaptchaVerifier(
+        auth,
+        "recaptcha-container",
+        {
+          size: "normal"
+        }
+      );
+
+      recaptchaVerifier.render();
+    }
+  }, 300);
+};
+
+window.sendCustomerOTP = async function () {
+
+  const mobile =
+    document.getElementById("customerMobile").value.trim();
+
+  if (!/^[0-9]{10}$/.test(mobile)) {
+    alert("कृपया 10 digit mobile number टाका.");
+    return;
+  }
+
+  try {
+
+    const phoneNumber = "+91" + mobile;
+
+    confirmationResult =
+      await signInWithPhoneNumber(
+        auth,
+        phoneNumber,
+        recaptchaVerifier
+      );
+
+    document
+      .getElementById("customerOtpBox")
+      .classList.remove("hidden");
+
+    document.getElementById("otpStatus").innerText =
+      "✅ OTP SMS पाठवला आहे.";
+
+  } catch (error) {
+
+    console.log(error);
+
+    alert(
+      "OTP पाठवता आला नाही.\n" +
+      (error.message || "")
+    );
+
+  }
+};
+
+window.verifyCustomerOTP = async function () {
+
+  const otp =
+    document.getElementById("customerOTP").value.trim();
+
+  if (!/^[0-9]{6}$/.test(otp)) {
+    alert("6 digit OTP टाका.");
+    return;
+  }
+
+  try {
+
+    await confirmationResult.confirm(otp);
+
+    document.querySelectorAll(".card")
+      .forEach(x => x.classList.add("hidden"));
+
+    document
+      .getElementById("customerDashboard")
+      .classList.remove("hidden");
+
+    document.getElementById("verifiedMobile").innerText =
+      auth.currentUser.phoneNumber;
+
+  } catch (error) {
+
+    alert("OTP चुकीचा आहे किंवा expired झाला आहे.");
+
+  }
+
+};
+</script>
 </style>
 </head>
 
@@ -262,7 +375,119 @@ Choose Option
 <p class="subtitle">
 Sushant Kirana
 </p>
+<!-- CUSTOMER LOGIN -->
 
+<div id="customerLogin" class="card hidden">
+
+  <div class="center">
+
+    <div class="logo">📱</div>
+
+    <h2>Customer Login</h2>
+
+    <p class="subtitle">
+      Mobile number वर OTP येईल
+    </p>
+
+  </div>
+
+  <input
+    id="customerMobile"
+    type="tel"
+    maxlength="10"
+    placeholder="10 digit Mobile Number">
+
+  <div id="recaptcha-container"></div>
+
+  <button
+    onclick="sendCustomerOTP()">
+
+    📲 Send OTP
+
+  </button>
+
+  <div id="customerOtpBox" class="hidden">
+
+    <input
+      id="customerOTP"
+      type="text"
+      maxlength="6"
+      inputmode="numeric"
+      placeholder="Enter 6 Digit OTP">
+
+    <button
+      class="green"
+      onclick="verifyCustomerOTP()">
+
+      ✅ Verify OTP
+
+    </button>
+
+  </div>
+
+  <p
+    id="otpStatus"
+    class="small">
+  </p>
+
+  <button
+    class="gray"
+    onclick="showScreen('login')">
+
+    ← Back
+
+  </button>
+
+</div>
+
+
+<!-- CUSTOMER DASHBOARD -->
+
+<div id="customerDashboard" class="card hidden">
+
+  <div class="center">
+
+    <div class="logo">🛍️</div>
+
+    <h1>Welcome Customer</h1>
+
+    <p class="subtitle">
+      Sushant Kirana & General Store
+    </p>
+
+    <div class="success">
+
+      ✅ Mobile Number Verified
+
+      <br><br>
+
+      <span id="verifiedMobile"></span>
+
+    </div>
+
+  </div>
+
+  <button onclick="billingMoment()">
+    🧾 Billing Moment
+  </button>
+
+  <button
+    class="orange"
+    onclick="openUdharBook()">
+
+    📒 My Udhar
+
+  </button>
+
+  <button
+    class="gray"
+    onclick="showScreen('login')">
+
+    Logout
+
+  </button>
+
+</div>
 </div>
 
 <button class="green" onclick="openAddProduct()">
