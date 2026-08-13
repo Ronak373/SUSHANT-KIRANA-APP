@@ -1,643 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Sushant Kirana & General Store</title>
 
 <script src="https://unpkg.com/html5-qrcode"></script>
 
 <style>
-
 *{
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
 }
 
 body{
-margin:0;
-min-height:100vh;
-background:linear-gradient(135deg,#061b3a,#087f8c,#20b486);
-color:#111827;
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#061b3a,#087f8c,#20b486);
+  color:#111827;
 }
 
 .container{
-max-width:550px;
-margin:auto;
-padding:15px;
+  max-width:550px;
+  margin:auto;
+  padding:15px;
 }
 
 .card{
-background:white;
-border-radius:25px;
-padding:22px;
-margin-top:18px;
-box-shadow:0 15px 40px rgba(0,0,0,.25);
+  background:#fff;
+  border-radius:25px;
+  padding:22px;
+  margin-top:18px;
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
-.center{
-text-align:center;
-}
+.center{text-align:center}
 
-.logo{
-font-size:60px;
-}
+.logo{font-size:60px}
 
-h1{
-margin:5px 0;
-}
+h1{margin:5px 0}
 
-.subtitle{
-color:#64748b;
-}
+.subtitle{color:#64748b}
 
 button{
-width:100%;
-padding:15px;
-margin:7px 0;
-border:0;
-border-radius:14px;
-background:#2563eb;
-color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
+  width:100%;
+  padding:15px;
+  margin:7px 0;
+  border:0;
+  border-radius:14px;
+  background:#2563eb;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
 }
 
-button:active{
-transform:scale(.98);
-}
+button:active{transform:scale(.98)}
 
-.green{
-background:#16a34a;
-}
+.green{background:#16a34a}
+.orange{background:#ea580c}
+.red{background:#dc2626}
+.gray{background:#64748b}
+.dark{background:#111827}
 
-.orange{
-background:#ea580c;
-}
-
-.red{
-background:#dc2626;
-}
-
-.gray{
-background:#64748b;
-}
-
-.dark{
-background:#111827;
-}
-
-.hidden{
-display:none!important;
-}
+.hidden{display:none!important}
 
 input,select{
-width:100%;
-padding:14px;
-margin:6px 0;
-border:1px solid #cbd5e1;
-border-radius:12px;
-font-size:16px;
+  width:100%;
+  padding:14px;
+  margin:6px 0;
+  border:1px solid #cbd5e1;
+  border-radius:12px;
+  font-size:16px;
 }
 
 .product{
-background:#f8fafc;
-border:1px solid #e2e8f0;
-border-radius:15px;
-padding:15px;
-margin:10px 0;
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  border-radius:15px;
+  padding:15px;
+  margin:10px 0;
 }
 
 .product-name{
-font-size:19px;
-font-weight:bold;
-margin-bottom:8px;
+  font-size:19px;
+  font-weight:bold;
+  margin-bottom:8px;
 }
 
 .price{
-color:#15803d;
-font-weight:bold;
-margin:5px 0;
+  color:#15803d;
+  font-weight:bold;
 }
 
 .small{
-font-size:13px;
-color:#64748b;
+  font-size:13px;
+  color:#64748b;
 }
 
 .badge{
-display:inline-block;
-padding:6px 10px;
-margin:3px;
-background:#dbeafe;
-color:#1d4ed8;
-border-radius:20px;
-font-size:13px;
+  display:inline-block;
+  padding:6px 10px;
+  margin:3px;
+  background:#dbeafe;
+  color:#1d4ed8;
+  border-radius:20px;
+  font-size:13px;
 }
 
 .total{
-background:#eff6ff;
-padding:18px;
-border-radius:15px;
-text-align:right;
-font-size:25px;
-font-weight:bold;
-margin-top:15px;
+  background:#eff6ff;
+  padding:18px;
+  border-radius:15px;
+  text-align:right;
+  font-size:25px;
+  font-weight:bold;
+  margin-top:15px;
 }
 
 .success{
-background:#dcfce7;
-color:#166534;
-padding:15px;
-border-radius:12px;
-margin:10px 0;
+  background:#dcfce7;
+  color:#166534;
+  padding:15px;
+  border-radius:12px;
+  margin:10px 0;
 }
 
 .warning{
-background:#fef3c7;
-color:#92400e;
-padding:15px;
-border-radius:12px;
-margin:10px 0;
+  background:#fef3c7;
+  color:#92400e;
+  padding:15px;
+  border-radius:12px;
+  margin:10px 0;
 }
 
 .qty{
-display:flex;
-align-items:center;
-gap:10px;
-margin-top:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
 }
 
 .qty button{
-width:50px;
-margin:0;
-padding:10px;
+  width:50px;
+  margin:0;
+  padding:10px;
 }
 
 .qty span{
-min-width:30px;
-text-align:center;
-font-weight:bold;
+  min-width:30px;
+  text-align:center;
+  font-weight:bold;
 }
 
-#readerAdd,
-#readerBill{
-width:100%;
-margin-top:10px;
-overflow:hidden;
-border-radius:15px;
+#readerAdd,#readerBill{
+  width:100%;
+  margin-top:10px;
+  overflow:hidden;
+  border-radius:15px;
 }
 
 #recaptcha-container{
-margin:10px 0;
+  margin:10px 0;
 }
-
 </style>
 
-
-<!-- ================= FIREBASE ================= -->
-
+<!-- FIREBASE -->
 <script type="module">
 
-import {
-initializeApp
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 import {
-getAuth,
-RecaptchaVerifier,
-signInWithPhoneNumber
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-
 const firebaseConfig = {
-
-apiKey:"AIzaSyD_oqywjIsPF38gXRbczqRiPVJCTrWbSE0",
-
-authDomain:"sushant-store.firebaseapp.com",
-
-projectId:"sushant-store",
-
-storageBucket:"sushant-store.firebasestorage.app",
-
-messagingSenderId:"766656826878",
-
-appId:"1:766656826878:web:12cfb77fc581559e9bc4af"
-
+  apiKey:"AIzaSyD_oqywjIsPF38gXRbczqRiPVJCTrWbSE0",
+  authDomain:"sushant-store.firebaseapp.com",
+  projectId:"sushant-store",
+  storageBucket:"sushant-store.firebasestorage.app",
+  messagingSenderId:"766656826878",
+  appId:"1:766656826878:web:12cfb77fc581559e9bc4af"
 };
 
-
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
 
 let confirmationResult = null;
-
 let recaptchaVerifier = null;
 
 
-/* ================= CUSTOMER LOGIN ================= */
+/* CUSTOMER LOGIN */
 
 window.openCustomerLogin = function(){
 
-showScreen("customerLogin");
+  showScreen("customerLogin");
 
-setTimeout(function(){
+  setTimeout(() => {
 
-if(!recaptchaVerifier){
+    if(recaptchaVerifier) return;
 
-try{
+    try{
 
-recaptchaVerifier =
-new RecaptchaVerifier(
-auth,
-"recaptcha-container",
-{
-size:"normal"
-}
-);
+      recaptchaVerifier = new RecaptchaVerifier(
+        auth,
+        "recaptcha-container",
+        {
+          size:"normal"
+        }
+      );
 
-recaptchaVerifier.render();
+      recaptchaVerifier.render();
 
-}catch(error){
+    }catch(error){
 
-console.error(error);
+      console.error(error);
 
-alert(
-"reCAPTCHA सुरू झाला नाही.\n"+
-error.message
-);
+      alert(
+        "reCAPTCHA सुरू झाला नाही.\n"+
+        error.message
+      );
+    }
 
-}
-
-}
-
-},300);
-
+  },500);
 };
 
 
-/* ================= SEND OTP ================= */
+/* SEND OTP */
 
 window.sendCustomerOTP = async function(){
 
-const mobile =
-document
-.getElementById("customerMobile")
-.value
-.trim();
+  const mobile =
+    document.getElementById("customerMobile")
+    .value.trim();
 
+  if(!/^[0-9]{10}$/.test(mobile)){
 
-if(!/^[0-9]{10}$/.test(mobile)){
+    alert("10 digit mobile number टाका.");
+    return;
+  }
 
-alert(
-"कृपया 10 digit mobile number टाका."
-);
+  try{
 
-return;
+    if(!recaptchaVerifier){
 
-}
+      recaptchaVerifier = new RecaptchaVerifier(
+        auth,
+        "recaptcha-container",
+        {
+          size:"normal"
+        }
+      );
 
+      await recaptchaVerifier.render();
+    }
 
-if(!recaptchaVerifier){
+    const phoneNumber = "+91" + mobile;
 
-alert(
-"reCAPTCHA तयार झालेला नाही. Page refresh करून पुन्हा प्रयत्न करा."
-);
+    confirmationResult =
+      await signInWithPhoneNumber(
+        auth,
+        phoneNumber,
+        recaptchaVerifier
+      );
 
-return;
+    document
+      .getElementById("customerOtpBox")
+      .classList.remove("hidden");
 
-}
+    document
+      .getElementById("otpStatus")
+      .innerText =
+      "✅ OTP SMS पाठवला आहे.";
 
+  }catch(error){
 
-try{
+    console.error(error);
 
-const phoneNumber =
-"+91"+mobile;
-
-
-confirmationResult =
-await signInWithPhoneNumber(
-auth,
-phoneNumber,
-recaptchaVerifier
-);
-
-
-document
-.getElementById("customerOtpBox")
-.classList
-.remove("hidden");
-
-
-document
-.getElementById("otpStatus")
-.innerText =
-"✅ OTP SMS पाठवला आहे.";
-
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"OTP पाठवता आला नाही.\n\n"+
-"Error: "+
-error.code+
-"\n\n"+
-error.message
-);
-
-
-/* reCAPTCHA reset */
-
-try{
-
-if(recaptchaVerifier){
-
-recaptchaVerifier.clear();
-
-recaptchaVerifier=null;
-
-}
-
-}catch(e){}
-
-}
-
+    alert(
+      "OTP पाठवता आला नाही.\n\n"+
+      error.code+
+      "\n"+
+      error.message
+    );
+  }
 };
 
 
-/* ================= VERIFY OTP ================= */
+/* VERIFY OTP */
 
 window.verifyCustomerOTP = async function(){
 
-const otp =
-document
-.getElementById("customerOTP")
-.value
-.trim();
+  const otp =
+    document
+      .getElementById("customerOTP")
+      .value.trim();
 
+  if(!/^[0-9]{6}$/.test(otp)){
 
-if(!/^[0-9]{6}$/.test(otp)){
+    alert("6 digit OTP टाका.");
+    return;
+  }
 
-alert(
-"6 digit OTP टाका."
-);
+  if(!confirmationResult){
 
-return;
+    alert("आधी Send OTP करा.");
+    return;
+  }
 
-}
+  try{
 
+    await confirmationResult.confirm(otp);
 
-if(!confirmationResult){
+    document
+      .getElementById("verifiedMobile")
+      .innerText =
+      auth.currentUser.phoneNumber;
 
-alert(
-"आधी Send OTP करा."
-);
+    showScreen("customerDashboard");
 
-return;
+  }catch(error){
 
-}
+    console.error(error);
 
-
-try{
-
-await confirmationResult.confirm(otp);
-
-
-document
-.getElementById("verifiedMobile")
-.innerText =
-auth.currentUser.phoneNumber;
-
-
-showScreen(
-"customerDashboard"
-);
-
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"OTP चुकीचा आहे किंवा expired झाला आहे."
-);
-
-}
-
+    alert(
+      "OTP चुकीचा आहे किंवा expired झाला आहे."
+    );
+  }
 };
 
 </script>
-
 </head>
-
 
 <body>
 
 <div class="container">
 
 
-<!-- ================= WELCOME ================= -->
+<!-- WELCOME -->
 
-<div
-id="welcome"
-class="card center">
+<div id="welcome" class="card center">
 
-<div class="logo">
-🛒
-</div>
+<div class="logo">🛒</div>
 
-<h1>
-Welcome to
-</h1>
-
-<h1>
-Sushant Kirana
-</h1>
+<h1>Welcome to</h1>
+<h1>Sushant Kirana</h1>
 
 <p class="subtitle">
 Sushant Kirana & General Store
 </p>
 
-<button
-onclick="showScreen('login')">
-
+<button onclick="showScreen('login')">
 Continue
-
 </button>
 
 </div>
 
 
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 
-<div
-id="login"
-class="card center hidden">
+<div id="login" class="card center hidden">
 
-<div class="logo">
-👋
-</div>
+<div class="logo">👋</div>
 
-<h1>
-Sushant Kirana
-</h1>
+<h1>Sushant Kirana</h1>
 
 <p class="subtitle">
 Choose Option
 </p>
 
-<button
-onclick="ownerLogin()">
-
+<button onclick="ownerLogin()">
 🏪 Owner Login
-
 </button>
 
-<button
-onclick="billingMoment()">
-
-🧾 Billing Moment
-
+<button onclick="billingMoment()">
+🧾 Billing
 </button>
 
-<button
-class="orange"
-onclick="openUdharBook()">
-
+<button class="orange" onclick="openUdharBook()">
 📒 Udhar
-
 </button>
 
-<button
-onclick="openCustomerLogin()">
-
+<button onclick="openCustomerLogin()">
 👤 Customer Login
-
 </button>
 
-<button
-class="gray"
-onclick="showScreen('welcome')">
-
+<button class="gray" onclick="showScreen('welcome')">
 ← Back
-
 </button>
 
 </div>
 
 
-<!-- ================= OWNER DASHBOARD ================= -->
+<!-- CUSTOMER LOGIN -->
 
-<div
-id="ownerDashboard"
-class="card hidden">
+<div id="customerLogin" class="card hidden">
 
 <div class="center">
 
-<div class="logo">
-🏪
-</div>
+<div class="logo">📱</div>
 
-<h1>
-Owner Dashboard
-</h1>
-
-<p class="subtitle">
-Sushant Kirana
-</p>
-
-</div>
-
-<button
-class="green"
-onclick="openAddProduct()">
-
-➕ Add Product
-
-</button>
-
-<button
-onclick="openPriceDiary()">
-
-📖 Price Diary
-
-</button>
-
-<button
-onclick="billingMoment()">
-
-🧾 Billing Moment
-
-</button>
-
-<button
-onclick="openProducts()">
-
-📦 Products / Stock
-
-</button>
-
-<button
-class="orange"
-onclick="openUdharBook()">
-
-📒 Udhar Book
-
-</button>
-
-<button
-onclick="openBills()">
-
-🧾 Bills
-
-</button>
-
-<button
-onclick="openSales()">
-
-💰 Sales
-
-</button>
-
-<button
-class="gray"
-onclick="logout()">
-
-Logout
-
-</button>
-
-</div>
-
-
-<!-- ================= CUSTOMER LOGIN ================= -->
-
-<div
-id="customerLogin"
-class="card hidden">
-
-<div class="center">
-
-<div class="logo">
-📱
-</div>
-
-<h2>
-Customer Login
-</h2>
+<h2>Customer Login</h2>
 
 <p class="subtitle">
 Mobile number वर OTP येईल
 </p>
 
 </div>
-
 
 <input
 id="customerMobile"
@@ -646,21 +417,13 @@ maxlength="10"
 inputmode="numeric"
 placeholder="10 digit Mobile Number">
 
-
 <div id="recaptcha-container"></div>
 
-
-<button
-onclick="sendCustomerOTP()">
-
+<button onclick="sendCustomerOTP()">
 📲 Send OTP
-
 </button>
 
-
-<div
-id="customerOtpBox"
-class="hidden">
+<div id="customerOtpBox" class="hidden">
 
 <input
 id="customerOTP"
@@ -669,9 +432,7 @@ maxlength="6"
 inputmode="numeric"
 placeholder="Enter 6 Digit OTP">
 
-
-<button
-class="green"
+<button class="green"
 onclick="verifyCustomerOTP()">
 
 ✅ Verify OTP
@@ -680,15 +441,9 @@ onclick="verifyCustomerOTP()">
 
 </div>
 
+<p id="otpStatus" class="small"></p>
 
-<p
-id="otpStatus"
-class="small">
-</p>
-
-
-<button
-class="gray"
+<button class="gray"
 onclick="showScreen('login')">
 
 ← Back
@@ -698,21 +453,15 @@ onclick="showScreen('login')">
 </div>
 
 
-<!-- ================= CUSTOMER DASHBOARD ================= -->
+<!-- CUSTOMER DASHBOARD -->
 
-<div
-id="customerDashboard"
-class="card hidden">
+<div id="customerDashboard" class="card hidden">
 
 <div class="center">
 
-<div class="logo">
-🛍️
-</div>
+<div class="logo">🛍️</div>
 
-<h1>
-Welcome Customer
-</h1>
+<h1>Welcome Customer</h1>
 
 <p class="subtitle">
 Sushant Kirana & General Store
@@ -730,27 +479,19 @@ Sushant Kirana & General Store
 
 </div>
 
-
-<button
-onclick="billingMoment()">
-
-🧾 Billing Moment
-
+<button onclick="billingMoment()">
+🧾 Billing
 </button>
 
-
-<button
-class="orange"
+<button class="orange"
 onclick="openUdharBook()">
 
 📒 My Udhar
 
 </button>
 
-
-<button
-class="gray"
-onclick="customerLogout()">
+<button class="gray"
+onclick="showScreen('welcome')">
 
 Logout
 
@@ -759,121 +500,140 @@ Logout
 </div>
 
 
-<!-- ================= ADD PRODUCT ================= -->
+<!-- OWNER -->
 
-<div
-id="addProduct"
-class="card hidden">
+<div id="ownerDashboard" class="card hidden">
 
-<h2>
+<div class="center">
+
+<div class="logo">🏪</div>
+
+<h1>Owner Dashboard</h1>
+
+<p class="subtitle">
+Sushant Kirana
+</p>
+
+</div>
+
+<button class="green"
+onclick="openAddProduct()">
 ➕ Add Product
-</h2>
-
-<input
-id="pName"
-placeholder="Product Name">
-
-<input
-id="pBarcode"
-placeholder="Barcode Number">
-
-<button
-onclick="startAddScanner()">
-
-📷 Scan Barcode
-
 </button>
 
-<div id="readerAdd"></div>
-
-<input
-id="pKg"
-type="number"
-placeholder="1 KG Price ₹">
-
-<input
-id="p500"
-type="number"
-placeholder="500 GM Price ₹">
-
-<input
-id="pPiece"
-type="number"
-placeholder="Piece Price ₹">
-
-<input
-id="pStock"
-type="number"
-placeholder="Stock Quantity">
-
-<button
-class="green"
-onclick="saveProduct()">
-
-💾 Save Product
-
+<button onclick="openPriceDiary()">
+📖 Price Diary
 </button>
 
-<button
-class="gray"
-onclick="backOwner()">
+<button onclick="billingMoment()">
+🧾 Billing
+</button>
 
-← Back
+<button onclick="openProducts()">
+📦 Products / Stock
+</button>
 
+<button class="orange"
+onclick="openUdharBook()">
+📒 Udhar Book
+</button>
+
+<button onclick="openBills()">
+🧾 Bills
+</button>
+
+<button onclick="openSales()">
+💰 Sales
+</button>
+
+<button class="gray"
+onclick="logout()">
+Logout
 </button>
 
 </div>
 
 
-<!-- ================= PRICE DIARY ================= -->
+<!-- ADD PRODUCT -->
 
-<div
-id="priceDiary"
-class="card hidden">
+<div id="addProduct" class="card hidden">
 
-<h2>
-📖 Price Diary
-</h2>
+<h2>➕ Add Product</h2>
 
-<input
-id="priceSearch"
+<input id="pName"
+placeholder="Product Name">
+
+<input id="pBarcode"
+placeholder="Barcode Number">
+
+<button onclick="startAddScanner()">
+📷 Scan Barcode
+</button>
+
+<div id="readerAdd"></div>
+
+<input id="pKg"
+type="number"
+placeholder="1 KG Price ₹">
+
+<input id="p500"
+type="number"
+placeholder="500 GM Price ₹">
+
+<input id="pPiece"
+type="number"
+placeholder="Piece Price ₹">
+
+<input id="pStock"
+type="number"
+placeholder="Stock Quantity">
+
+<button class="green"
+onclick="saveProduct()">
+💾 Save Product
+</button>
+
+<button class="gray"
+onclick="backOwner()">
+← Back
+</button>
+
+</div>
+
+
+<!-- PRICE DIARY -->
+
+<div id="priceDiary" class="card hidden">
+
+<h2>📖 Price Diary</h2>
+
+<input id="priceSearch"
 placeholder="🔍 Search Product"
 oninput="displayPrices()">
 
 <div id="priceResults"></div>
 
-<button
-class="gray"
+<button class="gray"
 onclick="backOwner()">
-
 ← Back
-
 </button>
 
 </div>
 
 
-<!-- ================= BILLING ================= -->
+<!-- BILLING -->
 
-<div
-id="billing"
-class="card hidden">
+<div id="billing" class="card hidden">
 
-<h2>
-🧾 Billing Moment
-</h2>
+<h2>🧾 Billing Moment</h2>
 
-<button
-onclick="startBillingScanner()">
-
+<button onclick="startBillingScanner()">
 📷 Scan Barcode
-
 </button>
 
 <div id="readerBill"></div>
 
-<input
-id="billingSearch"
+<input id="billingSearch"
 placeholder="🔍 Product Name Search"
 oninput="searchBilling()">
 
@@ -881,338 +641,224 @@ oninput="searchBilling()">
 
 <hr>
 
-<h3>
-🛒 Current Bill
-</h3>
+<h3>🛒 Current Bill</h3>
 
 <div id="billCart"></div>
 
 <div class="total">
 
 Grand Total ₹
-<span id="grandTotal">
-0
-</span>
+<span id="grandTotal">0</span>
 
 </div>
 
-<button
-class="green"
+<button class="green"
 onclick="openPayment()">
-
 Continue to Payment
-
 </button>
 
-<button
-class="gray"
+<button class="gray"
 onclick="backOwner()">
-
 ← Back
-
 </button>
 
 </div>
 
 
-<!-- ================= QUICK ADD ================= -->
+<!-- QUICK ADD -->
 
-<div
-id="quickAdd"
-class="card hidden">
+<div id="quickAdd" class="card hidden">
 
-<h2>
-➕ Quick Add
-</h2>
+<h2>➕ Quick Add</h2>
 
-<p class="small">
-Product database मध्ये नसेल तर इथे direct bill मध्ये add करा.
-</p>
-
-<input
-id="quickName"
+<input id="quickName"
 placeholder="Product Name">
 
-<input
-id="quickPrice"
+<input id="quickPrice"
 type="number"
 placeholder="Price ₹">
 
 <select id="quickUnit">
 
-<option value="1 KG">
-1 KG
-</option>
-
-<option value="500 GM">
-500 GM
-</option>
-
-<option value="Piece">
-Piece
-</option>
+<option>1 KG</option>
+<option>500 GM</option>
+<option>Piece</option>
 
 </select>
 
-<button
-class="green"
+<button class="green"
 onclick="quickAdd()">
-
 Add To Bill
-
 </button>
 
-<button
-class="gray"
+<button class="gray"
 onclick="billingMoment()">
-
 ← Back
-
 </button>
 
 </div>
 
 
-<!-- ================= PAYMENT ================= -->
+<!-- PAYMENT -->
 
-<div
-id="payment"
-class="card hidden">
+<div id="payment" class="card hidden">
 
-<h2>
-💳 Payment
-</h2>
+<h2>💳 Payment</h2>
 
 <div id="paymentTotal"></div>
 
-<button
-class="green"
+<button class="green"
 onclick="paidBill()">
-
 ✅ Paid
-
 </button>
 
-<button
-class="orange"
+<button class="orange"
 onclick="openUdharCustomer()">
-
 📝 Udhar
-
 </button>
 
-<button
-class="gray"
+<button class="gray"
 onclick="billingMoment()">
-
 ← Back
-
 </button>
 
 </div>
 
 
-<!-- ================= UDHAR CUSTOMER ================= -->
+<!-- UDHAR CUSTOMER -->
 
-<div
-id="udharCustomer"
-class="card hidden">
+<div id="udharCustomer" class="card hidden">
 
-<h2>
-📒 Customer Udhar
-</h2>
+<h2>📒 Customer Udhar</h2>
 
-<input
-id="udharName"
+<input id="udharName"
 placeholder="Customer Name">
 
-<input
-id="udharMobile"
+<input id="udharMobile"
 type="tel"
 maxlength="10"
 placeholder="Mobile Number">
 
-<button
-class="orange"
+<button class="orange"
 onclick="saveUdhar()">
-
 📝 Save Udhar
-
 </button>
 
-<button
-class="gray"
+<button class="gray"
 onclick="billingMoment()">
-
 ← Back
-
 </button>
 
 </div>
 
 
-<!-- ================= UDHAR BOOK ================= -->
+<!-- UDHAR BOOK -->
 
-<div
-id="udharBook"
-class="card hidden">
+<div id="udharBook" class="card hidden">
 
-<h2>
-📒 Udhar Book
-</h2>
+<h2>📒 Udhar Book</h2>
 
-<input
-id="udharSearch"
+<input id="udharSearch"
 placeholder="🔍 Search Customer"
 oninput="displayUdhar()">
 
 <div id="udharList"></div>
 
-<button
-class="gray"
+<button class="gray"
 onclick="showScreen('login')">
-
 ← Back
-
 </button>
 
 </div>
 
 
-<!-- ================= UDHAR MESSAGE ================= -->
+<!-- UDHAR MESSAGE -->
 
-<div
-id="udharMessage"
+<div id="udharMessage"
 class="card center hidden">
 
-<div class="logo">
-📱
-</div>
+<div class="logo">📱</div>
 
-<h2>
-Sushant Kirana & General Store
-</h2>
+<h2>Sushant Kirana</h2>
 
 <div class="success">
-
-Welcome! खरेदी करत राहा 😊
-
-<br><br>
 
 तुमची उधारी:
 
 <strong>
-₹<span id="messageAmount">
-0
-</span>
+₹<span id="messageAmount">0</span>
 </strong>
 
 <br><br>
 
-Thanks!
+Thanks 😊
 
 </div>
 
-<button
-class="green"
-onclick="payUPI()">
-
-💳 Pay Udhar by UPI
-
-</button>
-
-<button
-onclick="showScreen('login')">
-
+<button onclick="showScreen('login')">
 Done
-
 </button>
 
 </div>
 
 
-<!-- ================= PRODUCTS ================= -->
+<!-- PRODUCTS -->
 
-<div
-id="products"
-class="card hidden">
+<div id="products" class="card hidden">
 
-<h2>
-📦 Products / Stock
-</h2>
+<h2>📦 Products / Stock</h2>
 
-<input
-id="stockSearch"
+<input id="stockSearch"
 placeholder="🔍 Search Product"
 oninput="displayProducts()">
 
 <div id="productList"></div>
 
-<button
-class="gray"
+<button class="gray"
 onclick="backOwner()">
-
 ← Back
-
 </button>
 
 </div>
 
 
-<!-- ================= BILLS ================= -->
+<!-- BILLS -->
 
-<div
-id="bills"
-class="card hidden">
+<div id="bills" class="card hidden">
 
-<h2>
-🧾 Bills
-</h2>
+<h2>🧾 Bills</h2>
 
 <div id="billList"></div>
 
-<button
-class="gray"
+<button class="gray"
 onclick="backOwner()">
-
 ← Back
-
 </button>
 
 </div>
 
 
-<!-- ================= SALES ================= -->
+<!-- SALES -->
 
-<div
-id="sales"
-class="card hidden">
+<div id="sales" class="card hidden">
 
-<h2>
-💰 Sales
-</h2>
+<h2>💰 Sales</h2>
 
 <div id="salesData"></div>
 
-<button
-class="gray"
+<button class="gray"
 onclick="backOwner()">
-
 ← Back
-
 </button>
 
 </div>
-
 
 </div>
 
 
 <script>
 
-/* =================================================
-DATA
-================================================= */
+/* DATA */
 
 let products =
 JSON.parse(
@@ -1230,15 +876,11 @@ localStorage.getItem("SK_UDHARS") || "[]"
 );
 
 let cart=[];
-
 let scanner=null;
-
 let currentUdhar=null;
 
 
-/* =================================================
-SAVE DATA
-================================================= */
+/* SAVE */
 
 function saveData(){
 
@@ -1260,17 +902,14 @@ JSON.stringify(udhars)
 }
 
 
-/* =================================================
-SCREEN SYSTEM
-================================================= */
+/* SCREEN */
 
 const screens=[
-
 "welcome",
 "login",
-"ownerDashboard",
 "customerLogin",
 "customerDashboard",
+"ownerDashboard",
 "addProduct",
 "priceDiary",
 "billing",
@@ -1282,125 +921,88 @@ const screens=[
 "products",
 "bills",
 "sales"
-
 ];
-
 
 function showScreen(id){
 
-screens.forEach(function(screen){
+screens.forEach(s=>{
 
-const element =
-document.getElementById(screen);
+const el=document.getElementById(s);
 
-if(element){
-
-element.classList.add("hidden");
-
-}
+if(el) el.classList.add("hidden");
 
 });
 
+const target=document.getElementById(id);
 
-const target =
-document.getElementById(id);
-
-if(target){
-
+if(target)
 target.classList.remove("hidden");
 
 }
 
-}
 
-
-/* =================================================
-LOGIN
-================================================= */
+/* LOGIN */
 
 function ownerLogin(){
-
 showScreen("ownerDashboard");
-
 }
-
-
-function customerLogout(){
-
-showScreen("welcome");
-
-}
-
-
-function billingMoment(){
-
-stopScanner();
-
-showScreen("billing");
-
-displayCart();
-
-}
-
 
 function logout(){
-
 stopScanner();
-
 cart=[];
-
 showScreen("welcome");
-
 }
-
 
 function backOwner(){
-
 stopScanner();
-
 showScreen("ownerDashboard");
+}
 
+function billingMoment(){
+stopScanner();
+showScreen("billing");
+displayCart();
 }
 
 
-/* =================================================
-ADD PRODUCT
-================================================= */
+/* ADD PRODUCT */
 
 function openAddProduct(){
-
 showScreen("addProduct");
-
 }
-
 
 function saveProduct(){
 
-let name =
-document
-.getElementById("pName")
-.value
-.trim();
+const name=document.getElementById("pName").value.trim();
+const barcode=document.getElementById("pBarcode").value.trim();
 
-let barcode =
-document
-.getElementById("pBarcode")
-.value
-.trim();
+const kg=Number(document.getElementById("pKg").value);
+const gm=Number(document.getElementById("p500").value);
+const piece=Number(document.getElementById("pPiece").value);
+const stock=Number(document.getElementById("pStock").value);
 
-let kg =
-Number(
-document.getElementById("pKg").value
-);
+if(!name){
+alert("Product Name टाका.");
+return;
+}
 
-let gm =
-Number(
-document.getElementById("p500").value
-);
+if(!kg && !gm && !piece){
+alert("Price टाका.");
+return;
+}
 
-let piece =
-Number(
-document.getElementById("pPiece").value
-);
+products.push({
+id:Date.now(),
+name,
+barcode,
+kg,
+gm,
+piece,
+stock
+});
 
-let
+saveData();
+
+alert("✅ Product Saved!");
+
+document.get
