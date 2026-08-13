@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sushant Kirana</title>
+
+  <meta name="description"
+        content="Sushant Kirana - Smart Online Grocery Store">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f172a, #14532d);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 420px;
+      background: rgba(255,255,255,0.1);
+      padding: 30px 22px;
+      border-radius: 25px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-size: 65px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #d1fae5;
+      margin-bottom: 30px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      background: white;
+      color: #14532d;
+    }
+
+    button:hover {
+      transform: scale(1.02);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .back {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+    }
+
+    .menu {
+      margin-top: 20px;
+    }
+
+    .menu button {
+      background: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Welcome Screen -->
+    <div id="welcome">
+
+      <div class="logo">🛒</div>
+
+      <h1>Welcome to</h1>
+
+      <h1>Sushant Kirana</h1>
+
+      <p class="subtitle">
+        Your Smart Grocery Store
+      </p>
+
+      <button onclick="showLogin()">
+        Continue
+      </button>
+
+    </div>
+
+
+    <!-- Login Screen -->
+    <div id="login" class="hidden">
+
+      <div class="logo">👋</div>
+
+      <h1>Sushant Kirana</h1>
+
+      <p class="subtitle">
+        Select Login Type
+      </p>
+
+      <button onclick="customerLogin()">
+        👤 Customer Login
+      </button>
+
+      <button onclick="ownerLogin()">
+        🏪 Owner Login
+      </button>
+
+      <button class="back" onclick="backHome()">
+        ← Back
+      </button>
+
+    </div>
+
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="hidden">
+
+      <div class="logo">🛍️</div>
+
+      <h1>Welcome to</h1>
+
+      <h1>Sushant Kirana</h1>
+
+      <p id="role" class="subtitle"></p>
+
+      <div id="customerMenu" class="menu hidden">
+
+        <button>📷 Scan / Search Product</button>
+
+        <button>🛒 My Cart</button>
+
+        <button>🧾 My Bills</button>
+
+        <button>📦 My Orders</button>
+
+      </div>
+
+
+      <div id="ownerMenu" class="menu hidden">
+
+        <button>📷 Scan Barcode</button>
+
+        <button>➕ Add Product</button>
+
+        <button>📦 Stock Management</button>
+
+        <button>🧾 Today's Bills</button>
+
+        <button>💰 Today's Sales</button>
+
+      </div>
+
+      <button class="back" onclick="logout()">
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function showLogin() {
+
+      document.getElementById("welcome")
+        .classList.add("hidden");
+
+      document.getElementById("login")
+        .classList.remove("hidden");
+    }
+
+
+    function customerLogin() {
+
+      document.getElementById("login")
+        .classList.add("hidden");
+
+      document.getElementById("dashboard")
+        .classList.remove("hidden");
+
+      document.getElementById("role")
+        .innerText = "Customer Dashboard";
+
+      document.getElementById("customerMenu")
+        .classList.remove("hidden");
+    }
+
+
+    function ownerLogin() {
+
+      document.getElementById("login")
+        .classList.add("hidden");
+
+      document.getElementById("dashboard")
+        .classList.remove("hidden");
+
+      document.getElementById("role")
+        .innerText = "Owner Dashboard";
+
+      document.getElementById("ownerMenu")
+        .classList.remove("hidden");
+    }
+
+
+    function backHome() {
+
+      document.getElementById("login")
+        .classList.add("hidden");
+
+      document.getElementById("welcome")
+        .classList.remove("hidden");
+    }
+
+
+    function logout() {
+
+      document.getElementById("dashboard")
+        .classList.add("hidden");
+
+      document.getElementById("customerMenu")
+        .classList.add("hidden");
+
+      document.getElementById("ownerMenu")
+        .classList.add("hidden");
+
+      document.getElementById("welcome")
+        .classList.remove("hidden");
+    }
+
+  </script>
+
+</body>
+</html>
