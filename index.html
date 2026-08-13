@@ -6,196 +6,196 @@
 
 <title>Sushant Kirana & General Store</title>
 
-<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-  margin:0;
-  min-height:100vh;
-  background:linear-gradient(135deg,#071952,#088395,#35A29F);
-  color:#111827;
+margin:0;
+min-height:100vh;
+background:linear-gradient(135deg,#061b3a,#087f8c,#20b486);
+color:#111827;
 }
 
 .container{
-  width:100%;
-  max-width:520px;
-  margin:auto;
-  padding:16px;
+max-width:550px;
+margin:auto;
+padding:15px;
 }
 
 .card{
-  background:white;
-  border-radius:25px;
-  padding:22px;
-  margin-top:18px;
-  box-shadow:0 15px 40px rgba(0,0,0,.25);
+background:white;
+border-radius:25px;
+padding:22px;
+margin-top:18px;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
 .center{
-  text-align:center;
+text-align:center;
 }
 
 .logo{
-  font-size:65px;
+font-size:65px;
 }
 
 h1{
-  margin:6px 0;
+margin:5px 0;
 }
 
 .subtitle{
-  color:#64748b;
+color:#64748b;
 }
 
 button{
-  width:100%;
-  padding:15px;
-  margin:7px 0;
-  border:0;
-  border-radius:14px;
-  background:#2563eb;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
+width:100%;
+padding:15px;
+margin:7px 0;
+border:0;
+border-radius:14px;
+background:#2563eb;
+color:white;
+font-size:16px;
+font-weight:bold;
+}
+
+button:active{
+transform:scale(.98);
 }
 
 .green{
-  background:#16a34a;
+background:#16a34a;
 }
 
 .orange{
-  background:#ea580c;
+background:#ea580c;
 }
 
 .red{
-  background:#dc2626;
+background:#dc2626;
 }
 
 .gray{
-  background:#64748b;
+background:#64748b;
 }
 
 .dark{
-  background:#111827;
-}
-
-input,select{
-  width:100%;
-  padding:14px;
-  margin:6px 0;
-  border:1px solid #cbd5e1;
-  border-radius:12px;
-  font-size:16px;
+background:#111827;
 }
 
 .hidden{
-  display:none!important;
+display:none!important;
+}
+
+input,select{
+width:100%;
+padding:14px;
+margin:6px 0;
+border:1px solid #cbd5e1;
+border-radius:12px;
+font-size:16px;
 }
 
 .product{
-  background:#f8fafc;
-  border:1px solid #e2e8f0;
-  border-radius:15px;
-  padding:14px;
-  margin:10px 0;
+background:#f8fafc;
+border:1px solid #e2e8f0;
+border-radius:15px;
+padding:15px;
+margin:10px 0;
 }
 
 .product-name{
-  font-size:18px;
-  font-weight:bold;
+font-size:19px;
+font-weight:bold;
+margin-bottom:8px;
 }
 
 .price{
-  color:#15803d;
-  font-weight:bold;
-  margin-top:5px;
+color:#15803d;
+font-weight:bold;
+margin:5px 0;
 }
 
 .small{
-  color:#64748b;
-  font-size:13px;
-}
-
-.success{
-  background:#dcfce7;
-  color:#166534;
-  padding:15px;
-  border-radius:12px;
-  margin:10px 0;
-}
-
-.warning{
-  background:#fef3c7;
-  color:#92400e;
-  padding:15px;
-  border-radius:12px;
-  margin:10px 0;
-}
-
-.total{
-  background:#eff6ff;
-  padding:18px;
-  border-radius:15px;
-  text-align:right;
-  font-size:25px;
-  font-weight:bold;
-  margin-top:15px;
-}
-
-.line{
-  display:flex;
-  justify-content:space-between;
-  padding:9px 0;
-  border-bottom:1px solid #ddd;
-}
-
-.qty{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-top:10px;
-}
-
-.qty button{
-  width:50px;
-  margin:0;
-  padding:10px;
-}
-
-.qty span{
-  font-weight:bold;
-  min-width:30px;
-  text-align:center;
+font-size:13px;
+color:#64748b;
 }
 
 .badge{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:20px;
-  background:#dbeafe;
-  color:#1d4ed8;
-  margin:3px;
-  font-size:13px;
+display:inline-block;
+padding:6px 10px;
+margin:3px;
+background:#dbeafe;
+color:#1d4ed8;
+border-radius:20px;
+font-size:13px;
+}
+
+.total{
+background:#eff6ff;
+padding:18px;
+border-radius:15px;
+text-align:right;
+font-size:25px;
+font-weight:bold;
+margin-top:15px;
+}
+
+.success{
+background:#dcfce7;
+color:#166534;
+padding:15px;
+border-radius:12px;
+margin:10px 0;
+}
+
+.warning{
+background:#fef3c7;
+color:#92400e;
+padding:15px;
+border-radius:12px;
+margin:10px 0;
+}
+
+.qty{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:10px;
+}
+
+.qty button{
+width:50px;
+margin:0;
+padding:10px;
+}
+
+.qty span{
+min-width:30px;
+text-align:center;
+font-weight:bold;
 }
 
 #readerAdd,
 #readerBill{
-  width:100%;
-  margin-top:10px;
-  overflow:hidden;
-  border-radius:15px;
+width:100%;
+margin-top:10px;
+overflow:hidden;
+border-radius:15px;
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="container">
+
 
 <!-- ================= WELCOME ================= -->
 
@@ -211,14 +211,14 @@ input,select{
 Sushant Kirana & General Store
 </p>
 
-<button onclick="show('login')">
+<button onclick="showScreen('login')">
 Continue
 </button>
 
 </div>
 
 
-<!-- ================= THREE BUTTON LOGIN ================= -->
+<!-- ================= MAIN 3 BUTTONS ================= -->
 
 <div id="login" class="card center hidden">
 
@@ -227,7 +227,7 @@ Continue
 <h1>Sushant Kirana</h1>
 
 <p class="subtitle">
-Select Option
+Choose Option
 </p>
 
 <button onclick="ownerLogin()">
@@ -238,11 +238,11 @@ Select Option
 🧾 Billing Moment
 </button>
 
-<button class="orange" onclick="openUdhar()">
+<button class="orange" onclick="openUdharBook()">
 📒 Udhar
 </button>
 
-<button class="gray" onclick="show('welcome')">
+<button class="gray" onclick="showScreen('welcome')">
 ← Back
 </button>
 
@@ -278,10 +278,10 @@ Sushant Kirana
 </button>
 
 <button onclick="openProducts()">
-📦 Stock / Products
+📦 Products / Stock
 </button>
 
-<button class="orange" onclick="openUdhar()">
+<button class="orange" onclick="openUdharBook()">
 📒 Udhar Book
 </button>
 
@@ -314,7 +314,7 @@ placeholder="Product Name">
 id="pBarcode"
 placeholder="Barcode Number">
 
-<button onclick="scanAddBarcode()">
+<button onclick="startAddScanner()">
 📷 Scan Barcode
 </button>
 
@@ -371,13 +371,13 @@ oninput="displayPrices()">
 </div>
 
 
-<!-- ================= BILLING MOMENT ================= -->
+<!-- ================= BILLING ================= -->
 
 <div id="billing" class="card hidden">
 
 <h2>🧾 Billing Moment</h2>
 
-<button onclick="scanBillingBarcode()">
+<button onclick="startBillingScanner()">
 📷 Scan Barcode
 </button>
 
@@ -385,7 +385,7 @@ oninput="displayPrices()">
 
 <input
 id="billingSearch"
-placeholder="🔍 Type Product Name"
+placeholder="🔍 Product Name Search"
 oninput="searchBilling()">
 
 <div id="billingResults"></div>
@@ -400,8 +400,8 @@ oninput="searchBilling()">
 Grand Total ₹<span id="grandTotal">0</span>
 </div>
 
-<button class="green" onclick="paymentScreen()">
-Continue
+<button class="green" onclick="openPayment()">
+Continue to Payment
 </button>
 
 <button class="gray" onclick="backOwner()">
@@ -415,10 +415,10 @@ Continue
 
 <div id="quickAdd" class="card hidden">
 
-<h2>➕ Quick Add Product</h2>
+<h2>➕ Quick Add</h2>
 
 <p class="small">
-Product database मध्ये नसेल तर इथे direct add करा.
+Product database मध्ये नसेल तर इथे direct bill मध्ये add करा.
 </p>
 
 <input
@@ -432,21 +432,15 @@ placeholder="Price ₹">
 
 <select id="quickUnit">
 
-<option value="1 KG">
-1 KG
-</option>
+<option value="1 KG">1 KG</option>
 
-<option value="500 GM">
-500 GM
-</option>
+<option value="500 GM">500 GM</option>
 
-<option value="Piece">
-Piece
-</option>
+<option value="Piece">Piece</option>
 
 </select>
 
-<button class="green" onclick="quickAddProduct()">
+<button class="green" onclick="quickAdd()">
 Add To Bill
 </button>
 
@@ -469,7 +463,7 @@ Add To Bill
 ✅ Paid
 </button>
 
-<button class="orange" onclick="udharFromBill()">
+<button class="orange" onclick="openUdharCustomer()">
 📝 Udhar
 </button>
 
@@ -494,9 +488,9 @@ placeholder="Customer Name">
 id="udharMobile"
 type="tel"
 maxlength="10"
-placeholder="10 Digit Mobile Number">
+placeholder="Mobile Number">
 
-<button class="orange" onclick="saveBillUdhar()">
+<button class="orange" onclick="saveUdhar()">
 📝 Save Udhar
 </button>
 
@@ -507,7 +501,7 @@ placeholder="10 Digit Mobile Number">
 </div>
 
 
-<!-- ================= UDHAR HOME ================= -->
+<!-- ================= UDHAR BOOK ================= -->
 
 <div id="udharBook" class="card hidden">
 
@@ -520,7 +514,7 @@ oninput="displayUdhar()">
 
 <div id="udharList"></div>
 
-<button class="gray" onclick="show('login')">
+<button class="gray" onclick="showScreen('login')">
 ← Back
 </button>
 
@@ -533,7 +527,9 @@ oninput="displayUdhar()">
 
 <div class="logo">📱</div>
 
-<h2>Sushant Kirana & General Store</h2>
+<h2>
+Sushant Kirana & General Store
+</h2>
 
 <div class="success">
 
@@ -564,10 +560,10 @@ Demo OTP:
 </button>
 
 <p class="small">
-Actual SMS साठी SMS service/backend जोडावा लागेल.
+Actual SMS/OTP साठी SMS service/backend आवश्यक आहे.
 </p>
 
-<button onclick="show('login')">
+<button onclick="showScreen('login')">
 Done
 </button>
 
@@ -578,7 +574,7 @@ Done
 
 <div id="products" class="card hidden">
 
-<h2>📦 Stock / Products</h2>
+<h2>📦 Products / Stock</h2>
 
 <input
 id="stockSearch"
@@ -623,21 +619,30 @@ oninput="displayProducts()">
 
 </div>
 
+
 </div>
 
 
 <script>
 
-/* ================= DATA ================= */
+/* =================================================
+   DATA
+================================================= */
 
 let products =
-JSON.parse(localStorage.getItem("SK_PRODUCTS") || "[]");
+JSON.parse(
+localStorage.getItem("SK_PRODUCTS") || "[]"
+);
 
 let bills =
-JSON.parse(localStorage.getItem("SK_BILLS") || "[]");
+JSON.parse(
+localStorage.getItem("SK_BILLS") || "[]"
+);
 
 let udhars =
-JSON.parse(localStorage.getItem("SK_UDHARS") || "[]");
+JSON.parse(
+localStorage.getItem("SK_UDHARS") || "[]"
+);
 
 let cart=[];
 
@@ -646,7 +651,9 @@ let scanner=null;
 let currentUdhar=null;
 
 
-/* ================= SAVE ================= */
+/* =================================================
+   SAVE DATA
+================================================= */
 
 function saveData(){
 
@@ -668,7 +675,9 @@ JSON.stringify(udhars)
 }
 
 
-/* ================= SCREEN ================= */
+/* =================================================
+   SCREEN SYSTEM
+================================================= */
 
 const screens=[
 "welcome",
@@ -687,12 +696,12 @@ const screens=[
 "sales"
 ];
 
-function show(id){
+function showScreen(id){
 
-screens.forEach(function(x){
+screens.forEach(function(screen){
 
 document
-.getElementById(x)
+.getElementById(screen)
 .classList.add("hidden");
 
 });
@@ -704,11 +713,13 @@ document
 }
 
 
-/* ================= LOGIN ================= */
+/* =================================================
+   LOGIN
+================================================= */
 
 function ownerLogin(){
 
-show("ownerDashboard");
+showScreen("ownerDashboard");
 
 }
 
@@ -716,7 +727,7 @@ function billingMoment(){
 
 stopScanner();
 
-show("billing");
+showScreen("billing");
 
 displayCart();
 
@@ -728,7 +739,7 @@ stopScanner();
 
 cart=[];
 
-show("welcome");
+showScreen("welcome");
 
 }
 
@@ -736,16 +747,18 @@ function backOwner(){
 
 stopScanner();
 
-show("ownerDashboard");
+showScreen("ownerDashboard");
 
 }
 
 
-/* ================= ADD PRODUCT ================= */
+/* =================================================
+   ADD PRODUCT
+================================================= */
 
 function openAddProduct(){
 
-show("addProduct");
+showScreen("addProduct");
 
 }
 
@@ -781,7 +794,7 @@ document.getElementById("pStock").value
 
 if(!name){
 
-alert("Product Name टाका");
+alert("Product Name टाका.");
 
 return;
 
@@ -789,18 +802,7 @@ return;
 
 if(!kg && !gm && !piece){
 
-alert("कमीत कमी एक price टाका");
-
-return;
-
-}
-
-if(
-barcode &&
-products.some(p=>p.barcode===barcode)
-){
-
-alert("हा barcode आधीपासून आहे");
+alert("Price टाका.");
 
 return;
 
@@ -826,6 +828,10 @@ stock:stock
 
 saveData();
 
+alert(
+"✅ Product Successfully Saved!"
+);
+
 document.getElementById("pName").value="";
 document.getElementById("pBarcode").value="";
 document.getElementById("pKg").value="";
@@ -833,32 +839,26 @@ document.getElementById("p500").value="";
 document.getElementById("pPiece").value="";
 document.getElementById("pStock").value="";
 
-alert("✅ Product Saved");
-
 backOwner();
 
 }
 
 
-/* ================= ADD BARCODE ================= */
+/* =================================================
+   BARCODE SCANNER
+================================================= */
 
-function scanAddBarcode(){
+function startAddScanner(){
 
 startScanner("add");
 
 }
 
+function startBillingScanner(){
 
-/* ================= BILL BARCODE ================= */
-
-function scanBillingBarcode(){
-
-startScanner("bill");
+startScanner("billing");
 
 }
-
-
-/* ================= SCANNER ================= */
 
 function startScanner(type){
 
@@ -868,12 +868,12 @@ return;
 
 }
 
-let element=
+let element =
 type==="add"
 ? "readerAdd"
 : "readerBill";
 
-scanner=
+scanner =
 new Html5Qrcode(element);
 
 scanner.start(
@@ -890,7 +890,7 @@ height:150
 
 function(code){
 
-barcodeResult(code,type);
+barcodeFound(code,type);
 
 },
 
@@ -899,7 +899,7 @@ function(){}
 ).catch(function(){
 
 alert(
-"Camera चालू झाली नाही. Browser camera permission Allow करा."
+"Camera सुरू झाली नाही. Camera permission Allow करा."
 );
 
 scanner=null;
@@ -909,7 +909,7 @@ scanner=null;
 }
 
 
-function barcodeResult(code,type){
+function barcodeFound(code,type){
 
 stopScanner();
 
@@ -920,7 +920,7 @@ document
 .value=code;
 
 alert(
-"Barcode captured: "+code
+"Barcode Added: "+code
 );
 
 return;
@@ -935,16 +935,16 @@ p=>p.barcode===code
 if(!product){
 
 alert(
-"Product सापडला नाही. Quick Add उघडत आहे."
+"Product सापडला नाही. Quick Add करा."
 );
 
-show("quickAdd");
+showScreen("quickAdd");
 
 return;
 
 }
 
-showProductOptions(product);
+showBillingProduct(product);
 
 }
 
@@ -972,551 +972,13 @@ scanner=null;
 }
 
 
-/* ================= BILL SEARCH ================= */
-
-function searchBilling(){
-
-let q=
-document
-.getElementById("billingSearch")
-.value
-.toLowerCase()
-.trim();
-
-let box=
-document
-.getElementById("billingResults");
-
-box.innerHTML="";
-
-if(!q){
-
-return;
-
-}
-
-let result=
-products.filter(p=>
-p.name
-.toLowerCase()
-.includes(q)
-);
-
-if(!result.length){
-
-box.innerHTML=`
-
-<div class="warning">
-
-Product सापडला नाही.
-
-<button
-class="orange"
-onclick="openQuickAdd()">
-
-➕ Quick Add Product
-
-</button>
-
-</div>
-
-`;
-
-return;
-
-}
-
-result.forEach(function(p){
-
-showProductButton(p,box);
-
-});
-
-}
-
-
-function showProductOptions(product){
-
-let box=
-document.getElementById("billingResults");
-
-box.innerHTML="";
-
-showProductButton(product,box);
-
-}
-
-
-function showProductButton(p,box){
-
-let div=
-document.createElement("div");
-
-div.className="product";
-
-div.innerHTML=`
-
-<div class="product-name">
-${p.name}
-</div>
-
-${p.kg ? `
-<button onclick="addCart(${p.id},'1 KG')">
-1 KG — ₹${p.kg}
-</button>`:""}
-
-${p.gm ? `
-<button onclick="addCart(${p.id},'500 GM')">
-500 GM — ₹${p.gm}
-</button>`:""}
-
-${p.piece ? `
-<button onclick="addCart(${p.id},'Piece')">
-Piece — ₹${p.piece}
-</button>`:""}
-
-`;
-
-box.appendChild(div);
-
-}
-
-
-/* ================= CART ================= */
-
-function addCart(id,unit){
-
-let p=
-products.find(x=>x.id===id);
-
-if(!p)return;
-
-let price=0;
-
-if(unit==="1 KG")
-price=p.kg;
-
-if(unit==="500 GM")
-price=p.gm;
-
-if(unit==="Piece")
-price=p.piece;
-
-if(!price){
-
-alert(
-"या unit ची price उपलब्ध नाही"
-);
-
-return;
-
-}
-
-let item=
-cart.find(
-x=>x.id===id && x.unit===unit
-);
-
-if(item){
-
-item.quantity++;
-
-}else{
-
-cart.push({
-
-id:id,
-
-name:p.name,
-
-unit:unit,
-
-price:price,
-
-quantity:1
-
-});
-
-}
-
-displayCart();
-
-}
-
-
-function displayCart(){
-
-let box=
-document.getElementById("billCart");
-
-if(!box)return;
-
-box.innerHTML="";
-
-let total=0;
-
-cart.forEach(function(item,index){
-
-let amount=
-item.price*item.quantity;
-
-total+=amount;
-
-let div=
-document.createElement("div");
-
-div.className="product";
-
-div.innerHTML=`
-
-<div class="product-name">
-${item.name}
-</div>
-
-<div>
-${item.unit} × ₹${item.price}
-</div>
-
-<div class="qty">
-
-<button onclick="changeQty(${index},-1)">
-−
-</button>
-
-<span>
-${item.quantity}
-</span>
-
-<button onclick="changeQty(${index},1)">
-+
-</button>
-
-</div>
-
-<div class="price">
-₹${amount}
-</div>
-
-<button class="red"
-onclick="removeCart(${index})">
-Remove
-</button>
-
-`;
-
-box.appendChild(div);
-
-});
-
-document
-.getElementById("grandTotal")
-.innerText=total;
-
-}
-
-
-function changeQty(index,value){
-
-cart[index].quantity+=value;
-
-if(cart[index].quantity<=0){
-
-cart.splice(index,1);
-
-}
-
-displayCart();
-
-}
-
-
-function removeCart(index){
-
-cart.splice(index,1);
-
-displayCart();
-
-}
-
-
-/* ================= QUICK ADD ================= */
-
-function openQuickAdd(){
-
-show("quickAdd");
-
-}
-
-function quickAddProduct(){
-
-let name=
-document
-.getElementById("quickName")
-.value.trim();
-
-let price=
-Number(
-document
-.getElementById("quickPrice")
-.value
-);
-
-let unit=
-document
-.getElementById("quickUnit")
-.value;
-
-if(!name || price<=0){
-
-alert("Name आणि Price टाका");
-
-return;
-
-}
-
-let temp={
-
-id:"quick"+Date.now(),
-
-name:name,
-
-kg:unit==="1 KG"?price:0,
-
-gm:unit==="500 GM"?price:0,
-
-piece:unit==="Piece"?price:0
-
-};
-
-let item={
-
-id:temp.id,
-
-name:name,
-
-unit:unit,
-
-price:price,
-
-quantity:1
-
-};
-
-cart.push(item);
-
-document.getElementById("quickName").value="";
-document.getElementById("quickPrice").value="";
-
-billingMoment();
-
-}
-
-
-/* ================= PAYMENT ================= */
-
-function paymentScreen(){
-
-if(!cart.length){
-
-alert(
-"Bill मध्ये Product नाही"
-);
-
-return;
-
-}
-
-let total=
-cart.reduce(
-(a,x)=>a+x.price*x.quantity,
-0
-);
-
-document
-.getElementById("paymentTotal")
-.innerHTML=`
-
-<div class="total">
-Grand Total ₹${total}
-</div>
-
-`;
-
-show("payment");
-
-}
-
-
-function paidBill(){
-
-createBill("PAID");
-
-}
-
-
-/* ================= UDHAR ================= */
-
-function udharFromBill(){
-
-show("udharCustomer");
-
-}
-
-function saveBillUdhar(){
-
-let name=
-document
-.getElementById("udharName")
-.value.trim();
-
-let mobile=
-document
-.getElementById("udharMobile")
-.value.trim();
-
-if(!name){
-
-alert("Customer Name टाका");
-
-return;
-
-}
-
-if(!/^[0-9]{10}$/.test(mobile)){
-
-alert(
-"10 digit mobile number टाका"
-);
-
-return;
-
-}
-
-let total=
-cart.reduce(
-(a,x)=>a+x.price*x.quantity,
-0
-);
-
-let record={
-
-id:Date.now(),
-
-name:name,
-
-mobile:mobile,
-
-amount:total,
-
-date:new Date().toLocaleString(),
-
-paid:false
-
-};
-
-udhars.push(record);
-
-currentUdhar=record;
-
-createBill("UDHAR");
-
-let otp=
-Math.floor(
-100000+Math.random()*900000
-);
-
-document
-.getElementById("messageAmount")
-.innerText=total;
-
-document
-.getElementById("demoOtp")
-.innerText=otp;
-
-}
-
-
-/* ================= CREATE BILL ================= */
-
-function createBill(status){
-
-let total=
-cart.reduce(
-(a,x)=>a+x.price*x.quantity,
-0
-);
-
-let bill={
-
-id:Date.now(),
-
-date:new Date().toLocaleString(),
-
-items:JSON.parse(
-JSON.stringify(cart)
-),
-
-total:total,
-
-status:status
-
-};
-
-bills.push(bill);
-
-saveData();
-
-cart=[];
-
-if(status==="PAID"){
-
-alert(
-"✅ Bill Complete\nGrand Total ₹"+total
-);
-
-backOwner();
-
-}else{
-
-saveData();
-
-show("udharMessage");
-
-}
-
-}
-
-
-/* ================= UPI ================= */
-
-function payUPI(){
-
-if(!currentUdhar){
-
-alert(
-"Udhar customer सापडला नाही"
-);
-
-return;
-
-}
-
-let upi=
-"upi://pay?pa=Q450673367@ybl"
-+"&pn=Sushant%20Kirana"
-+"&am="+currentUdhar.amount
-+"&cu=INR";
-
-window.location.href=upi;
-
-}
-
-
-/* ================= PRICE DIARY ================= */
+/* =================================================
+   PRICE DIARY
+================================================= */
 
 function openPriceDiary(){
 
-show("priceDiary");
+showScreen("priceDiary");
 
 displayPrices();
 
@@ -1525,23 +987,24 @@ displayPrices();
 function displayPrices(){
 
 let q=
-document
-.getElementById("priceSearch")
+document.getElementById("priceSearch")
 .value
-.toLowerCase();
+.toLowerCase()
+.trim();
 
 let box=
-document
-.getElementById("priceResults");
+document.getElementById("priceResults");
 
 box.innerHTML="";
 
 let list=
-products.filter(p=>
-p.name
+products.filter(function(p){
+
+return p.name
 .toLowerCase()
-.includes(q)
-);
+.includes(q);
+
+});
 
 if(!list.length){
 
@@ -1589,98 +1052,899 @@ box.appendChild(div);
 }
 
 
-/* ================= PRODUCTS ================= */
+/* =================================================
+   BILLING SEARCH
+================================================= */
+
+function searchBilling(){
+
+let q=
+document.getElementById("billingSearch")
+.value
+.toLowerCase()
+.trim();
+
+let box=
+document.getElementById("billingResults");
+
+box.innerHTML="";
+
+if(!q){
+
+return;
+
+}
+
+let list=
+products.filter(function(p){
+
+return p.name
+.toLowerCase()
+.includes(q);
+
+});
+
+if(!list.length){
+
+box.innerHTML=`
+
+<div class="warning">
+
+Product सापडला नाही.
+
+<button
+class="orange"
+onclick="openQuickAdd()">
+
+➕ Quick Add Product
+
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+list.forEach(function(p){
+
+showBillingProduct(p);
+
+});
+
+}
+
+
+function showBillingProduct(p){
+
+let box=
+document.getElementById("billingResults");
+
+let div=
+document.createElement("div");
+
+div.className="product";
+
+div.innerHTML=`
+
+<div class="product-name">
+${p.name}
+</div>
+
+${p.kg ?
+`<button onclick="addToCart(${p.id},'1 KG')">
+1 KG — ₹${p.kg}
+</button>`:""}
+
+${p.gm ?
+`<button onclick="addToCart(${p.id},'500 GM')">
+500 GM — ₹${p.gm}
+</button>`:""}
+
+${p.piece ?
+`<button onclick="addToCart(${p.id},'Piece')">
+Piece — ₹${p.piece}
+</button>`:""}
+
+`;
+
+box.appendChild(div);
+
+}
+
+
+/* =================================================
+   CART
+================================================= */
+
+function addToCart(id,unit){
+
+let p=
+products.find(
+x=>x.id===id
+);
+
+if(!p)return;
+
+let price=0;
+
+if(unit==="1 KG")
+price=p.kg;
+
+if(unit==="500 GM")
+price=p.gm;
+
+if(unit==="Piece")
+price=p.piece;
+
+if(!price){
+
+alert(
+"या unit ची price available नाही."
+);
+
+return;
+
+}
+
+let existing=
+cart.find(function(x){
+
+return x.id===id &&
+x.unit===unit;
+
+});
+
+if(existing){
+
+existing.quantity++;
+
+}else{
+
+cart.push({
+
+id:id,
+
+name:p.name,
+
+unit:unit,
+
+price:price,
+
+quantity:1
+
+});
+
+}
+
+displayCart();
+
+}
+
+
+function displayCart(){
+
+let box=
+document.getElementById("billCart");
+
+if(!box)return;
+
+box.innerHTML="";
+
+let total=0;
+
+cart.forEach(function(item,index){
+
+let amount=
+item.price*
+item.quantity;
+
+total+=amount;
+
+let div=
+document.createElement("div");
+
+div.className="product";
+
+div.innerHTML=`
+
+<div class="product-name">
+${item.name}
+</div>
+
+<div>
+${item.unit} × ₹${item.price}
+</div>
+
+<div class="qty">
+
+<button onclick="changeQty(${index},-1)">
+−
+</button>
+
+<span>
+${item.quantity}
+</span>
+
+<button onclick="changeQty(${index},1)">
++
+</button>
+
+</div>
+
+<div class="price">
+Amount ₹${amount}
+</div>
+
+<button
+class="red"
+onclick="removeCart(${index})">
+
+🗑️ Remove
+
+</button>
+
+`;
+
+box.appendChild(div);
+
+});
+
+document.getElementById("grandTotal")
+.innerText=total;
+
+}
+
+
+function changeQty(index,value){
+
+cart[index].quantity+=value;
+
+if(cart[index].quantity<=0){
+
+cart.splice(index,1);
+
+}
+
+displayCart();
+
+}
+
+
+function removeCart(index){
+
+cart.splice(index,1);
+
+displayCart();
+
+}
+
+
+/* =================================================
+   QUICK ADD
+================================================= */
+
+function openQuickAdd(){
+
+showScreen("quickAdd");
+
+}
+
+function quickAdd(){
+
+let name=
+document.getElementById("quickName")
+.value.trim();
+
+let price=
+Number(
+document.getElementById("quickPrice")
+.value
+);
+
+let unit=
+document.getElementById("quickUnit")
+.value;
+
+if(!name || price<=0){
+
+alert(
+"Product Name आणि Price टाका."
+);
+
+return;
+
+}
+
+cart.push({
+
+id:"quick"+Date.now(),
+
+name:name,
+
+unit:unit,
+
+price:price,
+
+quantity:1
+
+});
+
+document.getElementById("quickName").value="";
+document.getElementById("quickPrice").value="";
+
+billingMoment();
+
+}
+
+
+/* =================================================
+   PAYMENT
+================================================= */
+
+function openPayment(){
+
+if(!cart.length){
+
+alert(
+"Bill मध्ये Product नाही."
+);
+
+return;
+
+}
+
+let total=
+cart.reduce(function(a,x){
+
+return a+
+x.price*x.quantity;
+
+},0);
+
+document
+.getElementById("paymentTotal")
+.innerHTML=`
+
+<div class="total">
+Grand Total ₹${total}
+</div>
+
+`;
+
+showScreen("payment");
+
+}
+
+
+function paidBill(){
+
+createBill("PAID");
+
+}
+
+
+/* =================================================
+   UDHAR
+================================================= */
+
+function openUdharCustomer(){
+
+showScreen("udharCustomer");
+
+}
+
+function saveUdhar(){
+
+let name=
+document
+.getElementById("udharName")
+.value.trim();
+
+let mobile=
+document
+.getElementById("udharMobile")
+.value.trim();
+
+if(!name){
+
+alert("Customer Name टाका.");
+
+return;
+
+}
+
+if(!/^[0-9]{10}$/.test(mobile)){
+
+alert(
+"10 digit mobile number टाका."
+);
+
+return;
+
+}
+
+let total=
+cart.reduce(function(a,x){
+
+return a+
+x.price*x.quantity;
+
+},0);
+
+currentUdhar={
+
+id:Date.now(),
+
+name:name,
+
+mobile:mobile,
+
+amount:total,
+
+date:new Date().toLocaleString(),
+
+paid:false
+
+};
+
+udhars.push(currentUdhar);
+
+createBill("UDHAR");
+
+let otp=
+Math.floor(
+100000+
+Math.random()*900000
+);
+
+document
+.getElementById("messageAmount")
+.innerText=total;
+
+document
+.getElementById("demoOtp")
+.innerText=otp;
+
+}
+
+
+/* =================================================
+   CREATE BILL
+================================================= */
+
+function createBill(status){
+
+let total=
+cart.reduce(function(a,x){
+
+return a+
+x.price*x.quantity;
+
+},0);
+
+bills.push({
+
+id:Date.now(),
+
+date:new Date().toLocaleString(),
+
+items:JSON.parse(
+JSON.stringify(cart)
+),
+
+total:total,
+
+status:status
+
+});
+
+saveData();
+
+cart=[];
+
+if(status==="PAID"){
+
+alert(
+"✅ Bill Complete\nGrand Total ₹"+total
+);
+
+backOwner();
+
+}else{
+
+showScreen("udharMessage");
+
+}
+
+}
+
+
+/* =================================================
+   UPI
+================================================= */
+
+function payUPI(){
+
+if(!currentUdhar){
+
+return;
+
+}
+
+let upi=
+"upi://pay?pa=Q450673367@ybl"+
+"&pn=Sushant%20Kirana"+
+"&am="+currentUdhar.amount+
+"&cu=INR";
+
+window.location.href=upi;
+
+}
+
+
+/* =================================================
+   UDHAR BOOK
+================================================= */
+
+function openUdharBook(){
+
+showScreen("udharBook");
+
+displayUdhar();
+
+}
+
+function displayUdhar(){
+
+let q=
+document.getElementById("udharSearch")
+.value
+.toLowerCase()
+.trim();
+
+let box=
+document.getElementById("udharList");
+
+box.innerHTML="";
+
+let list=
+udhars.filter(function(u){
+
+return u.name
+.toLowerCase()
+.includes(q);
+
+});
+
+if(!list.length){
+
+box.innerHTML=
+"<p class='small'>No Udhar Records.</p>";
+
+return;
+
+}
+
+list.forEach(function(u){
+
+let div=
+document.createElement("div");
+
+div.className="product";
+
+div.innerHTML=`
+
+<div class="product-name">
+${u.name}
+</div>
+
+📱 ${u.mobile}
+
+<br><br>
+
+💰 Udhar:
+<strong>
+₹${u.amount}
+</strong>
+
+<br><br>
+
+${u.date}
+
+<br><br>
+
+Status:
+${u.paid ? "✅ PAID":"🟠 PENDING"}
+
+${!u.paid ? `
+
+<button
+class="green"
+onclick="markUdharPaid(${u.id})">
+
+✅ Mark Paid
+
+</button>
+
+`:""}
+
+`;
+
+box.appendChild(div);
+
+});
+
+}
+
+
+function markUdharPaid(id){
+
+let u=
+udhars.find(
+x=>x.id===id
+);
+
+if(!u)return;
+
+u.paid=true;
+
+saveData();
+
+displayUdhar();
+
+}
+
+
+/* =================================================
+   PRODUCTS / STOCK
+================================================= */
+
+function openProducts(){
+
+showScreen("products");
+
+displayProducts();
+
+}
+
+
+function displayProducts(){
+
+let q=
+document.getElementById("stockSearch")
+.value
+.toLowerCase()
+.trim();
+
+let box=
+document.getElementById("productList");
+
+box.innerHTML="";
+
+let list=
+products.filter(function(p){
+
+return p.name
+.toLowerCase()
+.includes(q);
+
+});
+
+if(!list.length){
+
+box.innerHTML=`
+
+<div class="warning">
+Product सापडला नाही.
+</div>
+
+`;
+
+return;
+
+}
+
+list.forEach(function(p){
+
+let div=
+document.createElement("div");
+
+div.className="product";
+
+div.innerHTML=`
+
+<div class="product-name">
+${p.name}
+</div>
+
+<p>
+📷 Barcode:
+${p.barcode || "N/A"}
+</p>
+
+<p class="price">
+1 KG: ₹${p.kg || 0}
+</p>
+
+<p class="price">
+500 GM: ₹${p.gm || 0}
+</p>
+
+<p class="price">
+Piece: ₹${p.piece || 0}
+</p>
+
+<p>
+📦 Stock:
+<strong>${p.stock || 0}</strong>
+</p>
+
+<button
+class="green"
+onclick="editProduct(${p.id})">
+
+✏️ Edit Product
+
+</button>
+
+<button
+class="red"
+onclick="deleteProduct(${p.id})">
+
+🗑️ Delete Product
+
+</button>
+
+`;
+
+box.appendChild(div);
+
+});
+
+}
+
+
+/* =================================================
+   EDIT PRODUCT
+================================================= */
+
 function editProduct(id){
 
-  let p = products.find(x => x.id === id);
+let p=
+products.find(
+x=>x.id===id
+);
 
-  if(!p){
-    alert("Product सापडला नाही.");
-    return;
-  }
+if(!p){
 
-  let kg = prompt(
-    "1 KG Price ₹",
-    p.kg || ""
-  );
+alert(
+"Product सापडला नाही."
+);
 
-  if(kg === null) return;
+return;
 
-  let gm = prompt(
-    "500 GM Price ₹",
-    p.gm || ""
-  );
-
-  if(gm === null) return;
-
-  let piece = prompt(
-    "Piece Price ₹",
-    p.piece || ""
-  );
-
-  if(piece === null) return;
-
-  let stock = prompt(
-    "Stock Quantity",
-    p.stock || 0
-  );
-
-  if(stock === null) return;
-
-  p.kg = Number(kg) || 0;
-  p.gm = Number(gm) || 0;
-  p.piece = Number(piece) || 0;
-  p.stock = Number(stock) || 0;
-
-  saveData();
-
-  alert("✅ Product updated successfully!");
-
-  displayProducts();
 }
-  
+
+let name=
+prompt(
+"Product Name:",
+p.name
+);
+
+if(name===null)return;
+
+let kg=
+prompt(
+"1 KG Price ₹:",
+p.kg || 0
+);
+
+if(kg===null)return;
+
+let gm=
+prompt(
+"500 GM Price ₹:",
+p.gm || 0
+);
+
+if(gm===null)return;
+
+let piece=
+prompt(
+"Piece Price ₹:",
+p.piece || 0
+);
+
+if(piece===null)return;
+
+let stock=
+prompt(
+"Stock Quantity:",
+p.stock || 0
+);
+
+if(stock===null)return;
+
+p.name=
+name.trim();
+
+p.kg=
+Number(kg) || 0;
+
+p.gm=
+Number(gm) || 0;
+
+p.piece=
+Number(piece) || 0;
+
+p.stock=
+Number(stock) || 0;
+
+saveData();
+
+alert(
+"✅ Product Updated Successfully!"
+);
+
+displayProducts();
+
+}
+
+
+/* =================================================
+   DELETE PRODUCT
+================================================= */
+
 function deleteProduct(id){
 
-  let p = products.find(x => x.id === id);
+let p=
+products.find(
+x=>x.id===id
+);
 
-  if(!p){
-    return;
-  }
+if(!p)return;
 
-  let confirmDelete = confirm(
-    "❗ " + p.name +
-    " delete करायचा आहे का?"
-  );
+let confirmDelete=
+confirm(
+"❗ "+p.name+
+" delete करायचा आहे का?"
+);
 
-  if(!confirmDelete){
-    return;
-  }
+if(!confirmDelete){
 
-  products = products.filter(
-    x => x.id !== id
-  );
+return;
 
-  saveData();
+}
 
-  alert(
-    "🗑️ " + p.name +
-    " deleted successfully!"
-  );
+products=
+products.filter(
+x=>x.id!==id
+);
 
-  displayProducts();
+saveData();
+
+alert(
+"🗑️ Product Deleted Successfully!"
+);
+
+displayProducts();
+
 }
 
 
-
-/* ================= BILLS ================= */
+/* =================================================
+   BILLS
+================================================= */
 
 function openBills(){
 
-show("bills");
+showScreen("bills");
 
 let box=
-document
-.getElementById("billList");
+document.getElementById("billList");
 
 box.innerHTML="";
 
@@ -1708,7 +1972,7 @@ div.innerHTML=`
 Bill #${b.id}
 </strong>
 
-<br>
+<br><br>
 
 ${b.date}
 
@@ -1719,7 +1983,7 @@ Grand Total:
 ₹${b.total}
 </strong>
 
-<br>
+<br><br>
 
 Status:
 <span class="badge">
@@ -1735,122 +1999,21 @@ box.appendChild(div);
 }
 
 
-/* ================= UDHAR BOOK ================= */
-
-function openUdhar(){
-
-show("udharBook");
-
-displayUdhar();
-
-}
-
-function displayUdhar(){
-
-let q=
-document
-.getElementById("udharSearch")
-.value
-.toLowerCase();
-
-let box=
-document
-.getElementById("udharList");
-
-box.innerHTML="";
-
-let list=
-udhars.filter(u=>
-u.name
-.toLowerCase()
-.includes(q)
-);
-
-if(!list.length){
-
-box.innerHTML=
-"<p>No Udhar Records.</p>";
-
-return;
-
-}
-
-list.forEach(function(u){
-
-let div=
-document.createElement("div");
-
-div.className="product";
-
-div.innerHTML=`
-
-<div class="product-name">
-${u.name}
-</div>
-
-Mobile:
-${u.mobile}
-
-<br>
-
-Udhar:
-<strong>
-₹${u.amount}
-</strong>
-
-<br>
-
-${u.date}
-
-<br>
-
-Status:
-${u.paid ? "PAID":"PENDING"}
-
-${!u.paid ? `
-<button
-class="green"
-onclick="markPaid(${u.id})">
-✅ Mark Paid
-</button>
-`:""}
-
-`;
-
-box.appendChild(div);
-
-});
-
-}
-
-
-function markPaid(id){
-
-let u=
-udhars.find(x=>x.id===id);
-
-if(!u)return;
-
-u.paid=true;
-
-saveData();
-
-displayUdhar();
-
-}
-
-
-/* ================= SALES ================= */
+/* =================================================
+   SALES
+================================================= */
 
 function openSales(){
 
-show("sales");
+showScreen("sales");
 
 let total=
-bills.reduce(
-(a,b)=>a+Number(b.total),
-0
-);
+bills.reduce(function(a,b){
+
+return a+
+Number(b.total);
+
+},0);
 
 document
 .getElementById("salesData")
@@ -1870,6 +2033,8 @@ document
 Total Sales
 </p>
 
+<hr>
+
 <h3>
 🧾 ${bills.length}
 </h3>
@@ -1882,13 +2047,14 @@ Total Bills
 
 `;
 
-
 }
 
 
-/* ================= START ================= */
+/* =================================================
+   START
+================================================= */
 
-show("welcome");
+showScreen("welcome");
 
 </script>
 
