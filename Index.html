@@ -1,1 +1,2345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sushant Kirana & General Store</title>
 
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<style>
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+
+body{
+ margin:0;
+ min-height:100vh;
+ background:linear-gradient(135deg,#061b3a,#087f8c,#20b486);
+ color:#111827;
+}
+
+.container{max-width:550px;margin:auto;padding:15px}
+
+.card{
+ background:white;
+ border-radius:25px;
+ padding:22px;
+ margin-top:18px;
+ box-shadow:0 15px 40px rgba(0,0,0,.25)
+}
+
+.center{text-align:center}
+.logo{font-size:60px}
+.subtitle{color:#64748b}
+
+button{
+ width:100%;
+ padding:15px;
+ margin:7px 0;
+ border:0;
+ border-radius:14px;
+ background:#2563eb;
+ color:white;
+ font-size:16px;
+ font-weight:bold
+}
+
+.green{background:#16a34a}
+.orange{background:#ea580c}
+.red{background:#dc2626}
+.gray{background:#64748b}
+
+.hidden{display:none!important}
+
+input,select{
+ width:100%;
+ padding:14px;
+ margin:6px 0;
+ border:1px solid #cbd5e1;
+ border-radius:12px;
+ font-size:16px
+}
+
+.product{
+ background:#f8fafc;
+ border:1px solid #e2e8f0;
+ border-radius:15px;
+ padding:15px;
+ margin:10px 0
+}
+
+.product-name{
+ font-size:19px;
+ font-weight:bold;
+ margin-bottom:8px
+}
+
+.price{color:#15803d;font-weight:bold}
+
+.small{font-size:13px;color:#64748b}
+
+.badge{
+ display:inline-block;
+ padding:6px 10px;
+ margin:3px;
+ background:#dbeafe;
+ color:#1d4ed8;
+ border-radius:20px;
+ font-size:13px
+}
+
+.total{
+ background:#eff6ff;
+ padding:18px;
+ border-radius:15px;
+ text-align:right;
+ font-size:25px;
+ font-weight:bold;
+ margin-top:15px
+}
+
+.success{
+ background:#dcfce7;
+ color:#166534;
+ padding:15px;
+ border-radius:12px;
+ margin:10px 0
+}
+
+.warning{
+ background:#fef3c7;
+ color:#92400e;
+ padding:15px;
+ border-radius:12px;
+ margin:10px 0
+}
+
+.qty{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ margin-top:10px
+}
+
+.qty button{
+ width:50px;
+ margin:0;
+ padding:10px
+}
+
+.qty span{
+ min-width:30px;
+ text-align:center;
+ font-weight:bold
+}
+
+#readerAdd,#readerBill{
+ width:100%;
+ margin-top:10px;
+ overflow:hidden;
+ border-radius:15px
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- WELCOME -->
+<div id="welcome" class="card center">
+
+<div class="logo">🛒</div>
+
+<h1>Welcome to</h1>
+<h1>Sushant Kirana</h1>
+
+<p class="subtitle">
+Sushant Kirana & General Store
+</p>
+
+<button id="continueBtn">
+Continue
+</button>
+
+</div>
+
+
+<!-- LOGIN -->
+<div id="login" class="card center hidden">
+
+<div class="logo">👋</div>
+
+<h1>Sushant Kirana</h1>
+
+<p class="subtitle">Choose Option</p>
+
+<button id="ownerBtn">🏪 Owner Login</button>
+
+<button id="billingBtn">🧾 Billing</button>
+
+<button class="orange" id="udharBtn">📒 Udhar</button>
+
+<button id="customerBtn">👤 Customer Login</button>
+
+<button class="gray" id="loginBackBtn">← Back</button>
+
+</div>
+
+
+<!-- CUSTOMER LOGIN -->
+<div id="customerLogin" class="card hidden">
+
+<div class="center">
+
+<div class="logo">📱</div>
+
+<h2>Customer Login</h2>
+
+<p class="subtitle">
+Mobile number वर OTP येईल
+</p>
+
+</div>
+
+<input
+id="customerMobile"
+type="tel"
+maxlength="10"
+inputmode="numeric"
+placeholder="10 digit Mobile Number">
+
+<div id="recaptcha-container"></div>
+
+<button id="sendOtpBtn">
+📲 Send OTP
+</button>
+
+<div id="customerOtpBox" class="hidden">
+
+<input
+id="customerOTP"
+type="text"
+maxlength="6"
+inputmode="numeric"
+placeholder="Enter 6 Digit OTP">
+
+<button class="green" id="verifyOtpBtn">
+✅ Verify OTP
+</button>
+
+</div>
+
+<p id="otpStatus" class="small"></p>
+
+<button class="gray" id="customerBackBtn">
+← Back
+</button>
+
+</div>
+
+
+<!-- CUSTOMER DASHBOARD -->
+<div id="customerDashboard" class="card hidden">
+
+<div class="center">
+
+<div class="logo">🛍️</div>
+
+<h1>Welcome Customer</h1>
+
+<p class="subtitle">
+Sushant Kirana & General Store
+</p>
+
+<div class="success">
+✅ Mobile Number Verified
+<br><br>
+<span id="verifiedMobile"></span>
+</div>
+
+</div>
+
+<button id="customerBillingBtn">
+🧾 Billing
+</button>
+
+<button class="orange" id="customerUdharBtn">
+📒 My Udhar
+</button>
+
+<button class="gray" id="customerLogoutBtn">
+Logout
+</button>
+
+</div>
+
+
+<!-- OWNER DASHBOARD -->
+<div id="ownerDashboard" class="card hidden">
+
+<div class="center">
+
+<div class="logo">🏪</div>
+
+<h1>Owner Dashboard</h1>
+
+<p class="subtitle">Sushant Kirana</p>
+
+</div>
+
+<button class="green" id="addProductBtn">
+➕ Add Product
+</button>
+
+<button id="priceDiaryBtn">
+📖 Price Diary
+</button>
+
+<button id="ownerBillingBtn">
+🧾 Billing
+</button>
+
+<button id="productsBtn">
+📦 Products / Stock
+</button>
+
+<button class="orange" id="ownerUdharBtn">
+📒 Udhar Book
+</button>
+
+<button id="billsBtn">
+🧾 Bills
+</button>
+
+<button id="salesBtn">
+💰 Sales
+</button>
+
+<button class="gray" id="ownerLogoutBtn">
+Logout
+</button>
+
+</div>
+
+
+<!-- ADD PRODUCT -->
+<div id="addProduct" class="card hidden">
+
+<h2>➕ Add Product</h2>
+
+<input id="pName" placeholder="Product Name">
+
+<input id="pBarcode" placeholder="Barcode Number">
+
+<button id="scanAddBtn">
+📷 Scan Barcode
+</button>
+
+<div id="readerAdd"></div>
+
+<input id="pKg" type="number" placeholder="1 KG Price ₹">
+
+<input id="p500" type="number" placeholder="500 GM Price ₹">
+
+<input id="pPiece" type="number" placeholder="Piece Price ₹">
+
+<input id="pStock" type="number" placeholder="Stock Quantity">
+
+<button class="green" id="saveProductBtn">
+💾 Save Product
+</button>
+
+<button class="gray" id="addBackBtn">
+← Back
+</button>
+
+</div>
+
+
+<!-- PRICE DIARY -->
+<div id="priceDiary" class="card hidden">
+
+<h2>📖 Price Diary</h2>
+
+<input
+id="priceSearch"
+placeholder="🔍 Search Product">
+
+<div id="priceResults"></div>
+
+<button class="gray" id="priceBackBtn">
+← Back
+</button>
+
+</div>
+
+
+<!-- BILLING -->
+<div id="billing" class="card hidden">
+
+<h2>🧾 Billing Moment</h2>
+
+<button id="scanBillBtn">
+📷 Scan Barcode
+</button>
+
+<div id="readerBill"></div>
+
+<input
+id="billingSearch"
+placeholder="🔍 Product Name Search">
+
+<div id="billingResults"></div>
+
+<hr>
+
+<h3>🛒 Current Bill</h3>
+
+<div id="billCart"></div>
+
+<div class="total">
+Grand Total ₹<span id="grandTotal">0</span>
+</div>
+
+<button class="green" id="paymentBtn">
+Continue to Payment
+</button>
+
+<button class="gray" id="billingBackBtn">
+← Back
+</button>
+
+</div>
+
+
+<!-- QUICK ADD -->
+<div id="quickAdd" class="card hidden">
+
+<h2>➕ Quick Add</h2>
+
+<input id="quickName" placeholder="Product Name">
+
+<input id="quickPrice" type="number" placeholder="Price ₹">
+
+<select id="quickUnit">
+<option>1 KG</option>
+<option>500 GM</option>
+<option>Piece</option>
+</select>
+
+<button class="green" id="quickAddBtn">
+Add To Bill
+</button>
+
+<button class="gray" id="quickBackBtn">
+← Back
+</button>
+
+</div>
+
+
+<!-- PAYMENT -->
+<div id="payment" class="card hidden">
+
+<h2>💳 Payment</h2>
+
+<div id="paymentTotal"></div>
+
+<button class="green" id="paidBtn">
+✅ Paid
+</button>
+
+<button class="orange" id="paymentUdharBtn">
+📝 Udhar
+</button>
+
+<button class="gray" id="paymentBackBtn">
+← Back
+</button>
+
+</div>
+
+
+<!-- UDHAR CUSTOMER -->
+<div id="udharCustomer" class="card hidden">
+
+<h2>📒 Customer Udhar</h2>
+
+<input id="udharName" placeholder="Customer Name">
+
+<input
+id="udharMobile"
+type="tel"
+maxlength="10"
+placeholder="Mobile Number">
+
+<button class="orange" id="saveUdharBtn">
+📝 Save Udhar
+</button>
+
+<button class="gray" id="udharCustomerBackBtn">
+← Back
+</button>
+
+</div>
+
+
+<!-- UDHAR BOOK -->
+<div id="udharBook" class="card hidden">
+
+<h2>📒 Udhar Book</h2>
+
+<input
+id="udharSearch"
+placeholder="🔍 Search Customer">
+
+<div id="udharList"></div>
+
+<button class="gray" id="udharBookBackBtn">
+← Back
+</button>
+
+</div>
+
+
+<!-- UDHAR MESSAGE -->
+<div id="udharMessage" class="card center hidden">
+
+<div class="logo">📱</div>
+
+<h2>Sushant Kirana</h2>
+
+<div class="success">
+
+तुमची उधारी:
+
+<strong>
+₹<span id="messageAmount">0</span>
+</strong>
+
+<br><br>
+
+Thanks 😊
+
+</div>
+
+<button id="udharDoneBtn">
+Done
+</button>
+
+</div>
+
+
+<!-- PRODUCTS -->
+<div id="products" class="card hidden">
+
+<h2>📦 Products / Stock</h2>
+
+<input
+id="stockSearch"
+placeholder="🔍 Search Product">
+
+<div id="productList"></div>
+
+<button class="gray" id="productsBackBtn">
+← Back
+</button>
+
+</div>
+
+
+<!-- BILLS -->
+<div id="bills" class="card hidden">
+
+<h2>🧾 Bills</h2>
+
+<div id="billList"></div>
+
+<button class="gray" id="billsBackBtn">
+← Back
+</button>
+
+</div>
+
+
+<!-- SALES -->
+<div id="sales" class="card hidden">
+
+<h2>💰 Sales</h2>
+
+<div id="salesData"></div>
+
+<button class="gray" id="salesBackBtn">
+← Back
+</button>
+
+</div>
+
+</div>
+
+
+<script type="module">
+
+/* =====================================================
+   FIREBASE
+===================================================== */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+getAuth,
+RecaptchaVerifier,
+signInWithPhoneNumber
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+apiKey:"AIzaSyD_oqywjIsPF38gXRbczqRiPVJCTrWbSE0",
+
+authDomain:"sushant-store.firebaseapp.com",
+
+projectId:"sushant-store",
+
+storageBucket:"sushant-store.firebasestorage.app",
+
+messagingSenderId:"766656826878",
+
+appId:"1:766656826878:web:12cfb77fc581559e9bc4af"
+
+};
+
+
+const app=initializeApp(firebaseConfig);
+
+const auth=getAuth(app);
+
+let confirmationResult=null;
+
+let recaptchaVerifier=null;
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let products=
+JSON.parse(
+localStorage.getItem("SK_PRODUCTS")||"[]"
+);
+
+let bills=
+JSON.parse(
+localStorage.getItem("SK_BILLS")||"[]"
+);
+
+let udhars=
+JSON.parse(
+localStorage.getItem("SK_UDHARS")||"[]"
+);
+
+let cart=[];
+
+let scanner=null;
+
+let currentUdhar=null;
+
+
+/* =====================================================
+   SCREEN
+===================================================== */
+
+const screens=[
+
+"welcome",
+"login",
+"customerLogin",
+"customerDashboard",
+"ownerDashboard",
+"addProduct",
+"priceDiary",
+"billing",
+"quickAdd",
+"payment",
+"udharCustomer",
+"udharBook",
+"udharMessage",
+"products",
+"bills",
+"sales"
+
+];
+
+
+function showScreen(id){
+
+screens.forEach(function(name){
+
+const el=document.getElementById(name);
+
+if(el)
+el.classList.add("hidden");
+
+});
+
+const target=document.getElementById(id);
+
+if(target)
+target.classList.remove("hidden");
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+document
+.getElementById("continueBtn")
+.onclick=function(){
+
+showScreen("login");
+
+};
+
+
+document
+.getElementById("ownerBtn")
+.onclick=function(){
+
+showScreen("ownerDashboard");
+
+};
+
+
+document
+.getElementById("customerBtn")
+.onclick=function(){
+
+openCustomerLogin();
+
+};
+
+
+document
+.getElementById("billingBtn")
+.onclick=function(){
+
+billingMoment();
+
+};
+
+
+document
+.getElementById("udharBtn")
+.onclick=function(){
+
+openUdharBook();
+
+};
+
+
+document
+.getElementById("loginBackBtn")
+.onclick=function(){
+
+showScreen("welcome");
+
+};
+
+
+/* =====================================================
+   CUSTOMER LOGIN
+===================================================== */
+
+async function openCustomerLogin(){
+
+showScreen("customerLogin");
+
+setTimeout(async function(){
+
+try{
+
+if(!recaptchaVerifier){
+
+recaptchaVerifier=
+new RecaptchaVerifier(
+auth,
+"recaptcha-container",
+{
+size:"normal"
+}
+);
+
+await recaptchaVerifier.render();
+
+}
+
+}catch(error){
+
+console.error(error);
+
+}
+
+},300);
+
+}
+
+
+document
+.getElementById("sendOtpBtn")
+.onclick=async function(){
+
+const mobile=
+document
+.getElementById("customerMobile")
+.value.trim();
+
+
+if(!/^[0-9]{10}$/.test(mobile)){
+
+alert("10 digit mobile number टाका.");
+
+return;
+
+}
+
+
+try{
+
+if(!recaptchaVerifier){
+
+recaptchaVerifier=
+new RecaptchaVerifier(
+auth,
+"recaptcha-container",
+{
+size:"normal"
+}
+);
+
+await recaptchaVerifier.render();
+
+}
+
+
+const phone="+91"+mobile;
+
+
+confirmationResult=
+await signInWithPhoneNumber(
+auth,
+phone,
+recaptchaVerifier
+);
+
+
+document
+.getElementById("customerOtpBox")
+.classList.remove("hidden");
+
+
+document
+.getElementById("otpStatus")
+.innerText=
+"✅ OTP SMS पाठवला आहे.";
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"OTP पाठवता आला नाही.\n\n"+
+(error.code||"")+
+"\n"+
+(error.message||"")
+);
+
+}
+
+};
+
+
+document
+.getElementById("verifyOtpBtn")
+.onclick=async function(){
+
+const otp=
+document
+.getElementById("customerOTP")
+.value.trim();
+
+
+if(!/^[0-9]{6}$/.test(otp)){
+
+alert("6 digit OTP टाका.");
+
+return;
+
+}
+
+
+if(!confirmationResult){
+
+alert("आधी Send OTP करा.");
+
+return;
+
+}
+
+
+try{
+
+await confirmationResult.confirm(otp);
+
+
+document
+.getElementById("verifiedMobile")
+.innerText=
+auth.currentUser.phoneNumber;
+
+
+showScreen("customerDashboard");
+
+
+}catch(error){
+
+console.error(error);
+
+alert("OTP चुकीचा आहे किंवा expired झाला आहे.");
+
+}
+
+};
+
+
+document
+.getElementById("customerBackBtn")
+.onclick=function(){
+
+showScreen("login");
+
+};
+
+
+/* CUSTOMER DASHBOARD */
+
+document
+.getElementById("customerBillingBtn")
+.onclick=billingMoment;
+
+
+document
+.getElementById("customerUdharBtn")
+.onclick=openUdharBook;
+
+
+document
+.getElementById("customerLogoutBtn")
+.onclick=function(){
+
+showScreen("welcome");
+
+};
+
+
+/* =====================================================
+   OWNER
+===================================================== */
+
+document
+.getElementById("addProductBtn")
+.onclick=function(){
+
+showScreen("addProduct");
+
+};
+
+
+document
+.getElementById("priceDiaryBtn")
+.onclick=function(){
+
+showScreen("priceDiary");
+
+displayPrices();
+
+};
+
+
+document
+.getElementById("ownerBillingBtn")
+.onclick=billingMoment;
+
+
+document
+.getElementById("productsBtn")
+.onclick=function(){
+
+showScreen("products");
+
+displayProducts();
+
+};
+
+
+document
+.getElementById("ownerUdharBtn")
+.onclick=openUdharBook;
+
+
+document
+.getElementById("billsBtn")
+.onclick=openBills;
+
+
+document
+.getElementById("salesBtn")
+.onclick=openSales;
+
+
+document
+.getElementById("ownerLogoutBtn")
+.onclick=function(){
+
+stopScanner();
+
+cart=[];
+
+showScreen("welcome");
+
+};
+
+
+/* =====================================================
+   ADD PRODUCT
+===================================================== */
+
+document
+.getElementById("saveProductBtn")
+.onclick=function(){
+
+const name=
+document.getElementById("pName")
+.value.trim();
+
+const barcode=
+document.getElementById("pBarcode")
+.value.trim();
+
+const kg=
+Number(document.getElementById("pKg").value);
+
+const gm=
+Number(document.getElementById("p500").value);
+
+const piece=
+Number(document.getElementById("pPiece").value);
+
+const stock=
+Number(document.getElementById("pStock").value);
+
+
+if(!name){
+
+alert("Product Name टाका.");
+
+return;
+
+}
+
+
+if(!kg&&!gm&&!piece){
+
+alert("Price टाका.");
+
+return;
+
+}
+
+
+products.push({
+
+id:Date.now(),
+
+name:name,
+
+barcode:barcode,
+
+kg:kg,
+
+gm:gm,
+
+piece:piece,
+
+stock:stock
+
+});
+
+
+saveData();
+
+alert("✅ Product Successfully Saved!");
+
+
+document.getElementById("pName").value="";
+document.getElementById("pBarcode").value="";
+document.getElementById("pKg").value="";
+document.getElementById("p500").value="";
+document.getElementById("pPiece").value="";
+document.getElementById("pStock").value="";
+
+
+showScreen("ownerDashboard");
+
+};
+
+
+document
+.getElementById("addBackBtn")
+.onclick=function(){
+
+stopScanner();
+
+showScreen("ownerDashboard");
+
+};
+
+
+/* =====================================================
+   BARCODE
+===================================================== */
+
+document
+.getElementById("scanAddBtn")
+.onclick=function(){
+
+startScanner("add");
+
+};
+
+
+document
+.getElementById("scanBillBtn")
+.onclick=function(){
+
+startScanner("billing");
+
+};
+
+
+function startScanner(type){
+
+if(scanner)
+return;
+
+
+const id=
+type==="add"
+?"readerAdd"
+:"readerBill";
+
+
+scanner=
+new Html5Qrcode(id);
+
+
+scanner.start(
+
+{facingMode:"environment"},
+
+{
+fps:10,
+qrbox:{
+width:250,
+height:150
+}
+},
+
+function(code){
+
+barcodeFound(code,type);
+
+},
+
+function(){}
+
+).catch(function(error){
+
+console.error(error);
+
+alert(
+"Camera सुरू झाली नाही. Permission Allow करा."
+);
+
+scanner=null;
+
+});
+
+}
+
+
+function barcodeFound(code,type){
+
+stopScanner();
+
+
+if(type==="add"){
+
+document
+.getElementById("pBarcode")
+.value=code;
+
+alert("Barcode Added: "+code);
+
+return;
+
+}
+
+
+const p=
+products.find(function(x){
+
+return x.barcode===code;
+
+});
+
+
+if(!p){
+
+alert("Product सापडला नाही.");
+
+showScreen("quickAdd");
+
+return;
+
+}
+
+
+showBillingProduct(p);
+
+}
+
+
+function stopScanner(){
+
+if(!scanner)
+return;
+
+
+scanner.stop()
+.then(function(){
+
+scanner.clear();
+
+scanner=null;
+
+})
+.catch(function(){
+
+scanner=null;
+
+});
+
+}
+
+
+/* =====================================================
+   PRICE DIARY
+===================================================== */
+
+function displayPrices(){
+
+const q=
+document
+.getElementById("priceSearch")
+.value.toLowerCase().trim();
+
+
+const box=
+document.getElementById("priceResults");
+
+box.innerHTML="";
+
+
+const list=
+products.filter(function(p){
+
+return p.name.toLowerCase().includes(q);
+
+});
+
+
+if(!list.length){
+
+box.innerHTML=
+"<p class='small'>Product सापडला नाही.</p>";
+
+return;
+
+}
+
+
+list.forEach(function(p){
+
+const div=document.createElement("div");
+
+div.className="product";
+
+div.innerHTML=
+
+"<div class='product-name'>"+
+p.name+
+"</div>"+
+
+(p.kg?
+"<span class='badge'>1 KG ₹"+
+p.kg+
+"</span>":"")+
+
+(p.gm?
+"<span class='badge'>500 GM ₹"+
+p.gm+
+"</span>":"")+
+
+(p.piece?
+"<span class='badge'>Piece ₹"+
+p.piece+
+"</span>":"");
+
+
+box.appendChild(div);
+
+});
+
+}
+
+
+document
+.getElementById("priceSearch")
+.oninput=displayPrices;
+
+
+document
+.getElementById("priceBackBtn")
+.onclick=function(){
+
+showScreen("ownerDashboard");
+
+};
+
+
+/* =====================================================
+   BILLING
+===================================================== */
+
+function billingMoment(){
+
+stopScanner();
+
+showScreen("billing");
+
+displayCart();
+
+}
+
+
+document
+.getElementById("billingSearch")
+.oninput=function(){
+
+const q=
+this.value.toLowerCase().trim();
+
+const box=
+document.getElementById("billingResults");
+
+box.innerHTML="";
+
+
+if(!q)
+return;
+
+
+const list=
+products.filter(function(p){
+
+return p.name.toLowerCase().includes(q);
+
+});
+
+
+if(!list.length){
+
+box.innerHTML=
+
+"<div class='warning'>"+
+"Product सापडला नाही."+
+"<button class='orange' id='quickSearchBtn'>"+
+"➕ Quick Add"+
+"</button>"+
+"</div>";
+
+
+document
+.getElementById("quickSearchBtn")
+.onclick=function(){
+
+showScreen("quickAdd");
+
+};
+
+return;
+
+}
+
+
+list.forEach(showBillingProduct);
+
+};
+
+
+function showBillingProduct(p){
+
+const box=
+document.getElementById("billingResults");
+
+const div=
+document.createElement("div");
+
+div.className="product";
+
+
+let html=
+"<div class='product-name'>"+
+p.name+
+"</div>";
+
+
+if(p.kg){
+
+html+=
+"<button data-id='"+p.id+"' data-unit='1 KG'>"+
+"1 KG — ₹"+p.kg+
+"</button>";
+
+}
+
+
+if(p.gm){
+
+html+=
+"<button data-id='"+p.id+"' data-unit='500 GM'>"+
+"500 GM — ₹"+p.gm+
+"</button>";
+
+}
+
+
+if(p.piece){
+
+html+=
+"<button data-id='"+p.id+"' data-unit='Piece'>"+
+"Piece — ₹"+p.piece+
+"</button>";
+
+}
+
+
+div.innerHTML=html;
+
+
+div
+.querySelectorAll("button")
+.forEach(function(btn){
+
+btn.onclick=function(){
+
+addToCart(
+Number(btn.dataset.id),
+btn.dataset.unit
+);
+
+};
+
+});
+
+
+box.appendChild(div);
+
+}
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+function addToCart(id,unit){
+
+const p=
+products.find(function(x){
+
+return x.id===id;
+
+});
+
+
+if(!p)
+return;
+
+
+let price=0;
+
+
+if(unit==="1 KG")
+price=p.kg;
+
+if(unit==="500 GM")
+price=p.gm;
+
+if(unit==="Piece")
+price=p.piece;
+
+
+if(!price){
+
+alert("या unit ची price available नाही.");
+
+return;
+
+}
+
+
+const existing=
+cart.find(function(x){
+
+return x.id===id&&x.unit===unit;
+
+});
+
+
+if(existing){
+
+existing.quantity++;
+
+}else{
+
+cart.push({
+
+id:id,
+
+name:p.name,
+
+unit:unit,
+
+price:price,
+
+quantity:1
+
+});
+
+}
+
+
+displayCart();
+
+}
+
+
+function displayCart(){
+
+const box=
+document.getElementById("billCart");
+
+box.innerHTML="";
+
+
+let total=0;
+
+
+cart.forEach(function(item,index){
+
+const amount=
+item.price*item.quantity;
+
+total+=amount;
+
+
+const div=
+document.createElement("div");
+
+div.className="product";
+
+
+div.innerHTML=
+
+"<div class='product-name'>"+
+item.name+
+"</div>"+
+
+"<div>"+
+item.unit+
+" × ₹"+
+item.price+
+"</div>"+
+
+"<div class='qty'>"+
+
+"<button class='minus'>−</button>"+
+
+"<span>"+
+item.quantity+
+"</span>"+
+
+"<button class='plus'>+</button>"+
+
+"</div>"+
+
+"<div class='price'>"+
+"Amount ₹"+amount+
+"</div>"+
+
+"<button class='red remove'>"+
+"🗑️ Remove"+
+"</button>";
+
+
+div.querySelector(".minus")
+.onclick=function(){
+
+changeQty(index,-1);
+
+};
+
+
+div.querySelector(".plus")
+.onclick=function(){
+
+changeQty(index,1);
+
+};
+
+
+div.querySelector(".remove")
+.onclick=function(){
+
+removeCart(index);
+
+};
+
+
+box.appendChild(div);
+
+});
+
+
+document
+.getElementById("grandTotal")
+.innerText=total;
+
+}
+
+
+function changeQty(index,value){
+
+cart[index].quantity+=value;
+
+
+if(cart[index].quantity<=0){
+
+cart.splice(index,1);
+
+}
+
+
+displayCart();
+
+}
+
+
+function removeCart(index){
+
+cart.splice(index,1);
+
+displayCart();
+
+}
+
+
+/* =====================================================
+   QUICK ADD
+===================================================== */
+
+document
+.getElementById("quickAddBtn")
+.onclick=function(){
+
+const name=
+document.getElementById("quickName")
+.value.trim();
+
+const price=
+Number(document.getElementById("quickPrice").value);
+
+const unit=
+document.getElementById("quickUnit").value;
+
+
+if(!name||price<=0){
+
+alert("Product Name आणि Price टाका.");
+
+return;
+
+}
+
+
+cart.push({
+
+id:"quick"+Date.now(),
+
+name:name,
+
+unit:unit,
+
+price:price,
+
+quantity:1
+
+});
+
+
+document.getElementById("quickName").value="";
+document.getElementById("quickPrice").value="";
+
+
+billingMoment();
+
+};
+
+
+document
+.getElementById("quickBackBtn")
+.onclick=billingMoment;
+
+
+/* =====================================================
+   PAYMENT
+===================================================== */
+
+document
+.getElementById("paymentBtn")
+.onclick=function(){
+
+if(!cart.length){
+
+alert("Bill मध्ये Product नाही.");
+
+return;
+
+}
+
+
+const total=
+cart.reduce(function(a,x){
+
+return a+x.price*x.quantity;
+
+},0);
+
+
+document
+.getElementById("paymentTotal")
+.innerHTML=
+"<div class='total'>"+
+"Grand Total ₹"+
+total+
+"</div>";
+
+
+showScreen("payment");
+
+};
+
+
+document
+.getElementById("paidBtn")
+.onclick=function(){
+
+createBill("PAID");
+
+};
+
+
+document
+.getElementById("paymentUdharBtn")
+.onclick=function(){
+
+showScreen("udharCustomer");
+
+};
+
+
+document
+.getElementById("paymentBackBtn")
+.onclick=billingMoment;
+
+
+/* =====================================================
+   UDHAR
+===================================================== */
+
+document
+.getElementById("saveUdharBtn")
+.onclick=function(){
+
+const name=
+document
+.getElementById("udharName")
+.value.trim();
+
+const mobile=
+document
+.getElementById("udharMobile")
+.value.trim();
+
+
+if(!name){
+
+alert("Customer Name टाका.");
+
+return;
+
+}
+
+
+if(!/^[0-9]{10}$/.test(mobile)){
+
+alert("10 digit mobile number टाका.");
+
+return;
+
+}
+
+
+const total=
+cart.reduce(function(a,x){
+
+return a+x.price*x.quantity;
+
+},0);
+
+
+currentUdhar={
+
+id:Date.now(),
+
+name:name,
+
+mobile:mobile,
+
+amount:total,
+
+date:new Date().toLocaleString(),
+
+paid:false
+
+};
+
+
+udhars.push(currentUdhar);
+
+
+createBill("UDHAR");
+
+
+document
+.getElementById("messageAmount")
+.innerText=total;
+
+};
+
+
+document
+.getElementById("udharCustomerBackBtn")
+.onclick=billingMoment;
+
+
+document
+.getElementById("udharDoneBtn")
+.onclick=function(){
+
+showScreen("login");
+
+};
+
+
+/* =====================================================
+   CREATE BILL
+===================================================== */
+
+function createBill(status){
+
+const total=
+cart.reduce(function(a,x){
+
+return a+x.price*x.quantity;
+
+},0);
+
+
+bills.push({
+
+id:Date.now(),
+
+date:new Date().toLocaleString(),
+
+items:JSON.parse(
+JSON.stringify(cart)
+),
+
+total:total,
+
+status:status
+
+});
+
+
+saveData();
+
+
+cart=[];
+
+
+if(status==="PAID"){
+
+alert(
+"✅ Bill Complete\nGrand Total ₹"+
+total
+);
+
+showScreen("ownerDashboard");
+
+}else{
+
+showScreen("udharMessage");
+
+}
+
+}
+
+
+/* =====================================================
+   UDHAR BOOK
+===================================================== */
+
+function openUdharBook(){
+
+showScreen("udharBook");
+
+displayUdhar();
+
+}
+
+
+document
+.getElementById("udharSearch")
+.oninput=displayUdhar;
+
+
+function displayUdhar(){
+
+const q=
+document
+.getElementById("udharSearch")
+.value.toLowerCase().trim();
+
+
+const box=
+document.getElementById("udharList");
+
+box.innerHTML="";
+
+
+const list=
+udhars.filter(function(u){
+
+return u.name.toLowerCase().includes(q);
+
+});
+
+
+if(!list.length){
+
+box.innerHTML=
+"<p class='small'>No Udhar Records.</p>";
+
+return;
+
+}
+
+
+list.forEach(function(u){
+
+const div=
+document.createElement("div");
+
+div.className="product";
+
+
+div.innerHTML=
+
+"<div class='product-name'>"+
+u.name+
+"</div>"+
+
+"📱 "+u.mobile+
+"<br><br>"+
+
+"💰 Udhar: <strong>₹"+
+u.amount+
+"</strong>"+
+"<br><br>"+
+
+u.date+
+"<br><br>"+
+
+"Status: "+
+(u.paid?"✅ PAID":"🟠 PENDING");
+
+
+if(!u.paid){
+
+const btn=
+document.createElement("button");
+
+btn.className="green";
+
+btn.innerText="✅ Mark Paid";
+
+btn.onclick=function(){
+
+u.paid=true;
+
+saveData();
+
+displayUdhar();
+
+};
+
+div.appendChild(btn);
+
+}
+
+
+box.appendChild(div);
+
+});
+
+}
+
+
+document
+.getElementById("udharBookBackBtn")
+.onclick=function(){
+
+showScreen("login");
+
+};
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+document
+.getElementById("stockSearch")
+.oninput=displayProducts;
+
+
+function displayProducts(){
+
+const q=
+document
+.getElementById("stockSearch")
+.value.toLowerCase().trim();
+
+
+const box=
+document.getElementById("productList");
+
+box.innerHTML="";
+
+
+const list=
+products.filter(function(p){
+
+return p.name.toLowerCase().includes(q);
+
+});
+
+
+if(!list.length){
+
+box.innerHTML=
+"<div class='warning'>Product सापडला नाही.</div>";
+
+return;
+
+}
+
+
+list.forEach(function(p){
+
+const div=
+document.createElement("div");
+
+div.className="product";
+
+
+div.innerHTML=
+
+"<div class='product-name'>"+
+p.name+
+"</div>"+
+
+"<p>📷 Barcode: "+
+(p.barcode||"N/A")+
+"</p>"+
+
+"<p class='price'>1 KG: ₹"+
+(p.kg||0)+
+"</p>"+
+
+"<p class='price'>500 GM: ₹"+
+(p.gm||0)+
+"</p>"+
+
+"<p class='price'>Piece: ₹"+
+(p.piece||0)+
+"</p>"+
+
+"<p>📦 Stock: <strong>"+
+(p.stock||0)+
+"</strong></p>";
+
+
+const del=
+document.createElement("button");
+
+del.className="red";
+
+del.innerText="🗑️ Delete Product";
+
+
+del.onclick=function(){
+
+if(confirm(
+"❗ "+p.name+
+" delete करायचा आहे का?"
+)){
+
+products=
+products.filter(function(x){
+
+return x.id!==p.id;
+
+});
+
+saveData();
+
+displayProducts();
+
+}
+
+};
+
+
+div.appendChild(del);
+
+box.appendChild(div);
+
+});
+
+}
+
+
+document
+.getElementById("productsBackBtn")
+.onclick=function(){
+
+showScreen("ownerDashboard");
+
+};
+
+
+/* =====================================================
+   BILLS
+===================================================== */
+
+function openBills(){
+
+showScreen("bills");
+
+
+const box=
+document.getElementById("billList");
+
+box.innerHTML="";
+
+
+if(!bills.length){
+
+box.innerHTML="<p>No Bills Yet.</p>";
+
+return;
+
+}
+
+
+[...bills]
+.reverse()
+.forEach(function(b){
+
+const div=
+document.createElement("div");
+
+div.className="product";
+
+
+div.innerHTML=
+
+"<strong>Bill #"+
+b.id+
+"</strong>"+
+"<br><br>"+
+b.date+
+"<br><br>"+
+"Grand Total: <strong>₹"+
+b.total+
+"</strong>"+
+"<br><br>"+
+"Status: <span class='badge'>"+
+b.status+
+"</span>";
+
+
+box.appendChild(div);
+
+});
+
+}
+
+
+document
+.getElementById("billsBackBtn")
+.onclick=function(){
+
+showScreen("ownerDashboard");
+
+};
+
+
+/* =====================================================
+   SALES
+===================================================== */
+
+function openSales(){
+
+showScreen("sales");
+
+
+const total=
+bills.reduce(function(a,b){
+
+return a+Number(b.total);
+
+},0);
+
+
+document
+.getElementById("salesData")
+.innerHTML=
+
+"<div class='product center'>"+
+
+"<div class='logo'>💰</div>"+
+
+"<h2>₹"+total+"</h2>"+
+
+"<p>Total Sales</p>"+
+
+"<hr>"+
+
+"<h3>🧾 "+
+bills.length+
+"</h3>"+
+
+"<p>Total Bills</p>"+
+
+"</div>";
+
+}
+
+
+document
+.getElementById("salesBackBtn")
+.onclick=function(){
+
+showScreen("ownerDashboard");
+
+};
+
+
+/* =====================================================
+   BACK BILLING
+===================================================== */
+
+document
+.getElementById("billingBackBtn")
+.onclick=function(){
+
+stopScanner();
+
+showScreen("ownerDashboard");
+
+};
+
+
+/* =====================================================
+   SAVE DATA
+===================================================== */
+
+function saveData(){
+
+localStorage.setItem(
+"SK_PRODUCTS",
+JSON.stringify(products)
+);
+
+localStorage.setItem(
+"SK_BILLS",
+JSON.stringify(bills)
+);
+
+localStorage.setItem(
+"SK_UDHARS",
+JSON.stringify(udhars)
+);
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+showScreen("welcome");
+
+</script>
+
+</body>
+</html>
