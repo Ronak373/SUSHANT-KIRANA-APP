@@ -6,34 +6,35 @@
 
   <title>Sushant Kirana</title>
 
-  <meta name="description"
-        content="Sushant Kirana - Smart Online Grocery Store">
-
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
     }
 
     body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f172a, #14532d);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: 0;
+      background: #f3f4f6;
+      color: #222;
     }
 
     .container {
-      width: 92%;
-      max-width: 420px;
-      background: rgba(255,255,255,0.1);
-      padding: 30px 22px;
-      border-radius: 25px;
+      max-width: 500px;
+      margin: auto;
+      min-height: 100vh;
+      padding: 25px 15px;
+    }
+
+    .screen {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    .center {
       text-align: center;
-      backdrop-filter: blur(12px);
     }
 
     .logo {
@@ -42,219 +43,1238 @@
     }
 
     h1 {
-      font-size: 32px;
-      margin-bottom: 8px;
+      margin: 8px 0;
     }
 
     .subtitle {
-      color: #d1fae5;
-      margin-bottom: 30px;
+      color: #666;
+      margin-bottom: 25px;
     }
 
     button {
       width: 100%;
-      padding: 15px;
+      padding: 14px;
       margin: 8px 0;
       border: none;
       border-radius: 12px;
-      font-size: 17px;
-      font-weight: bold;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
       cursor: pointer;
-      background: white;
-      color: #14532d;
     }
 
     button:hover {
-      transform: scale(1.02);
+      opacity: 0.9;
+    }
+
+    .green {
+      background: #16a34a;
+    }
+
+    .red {
+      background: #dc2626;
+    }
+
+    .orange {
+      background: #ea580c;
+    }
+
+    .gray {
+      background: #6b7280;
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
 
-    .back {
-      background: transparent;
-      color: white;
-      border: 1px solid white;
+    input {
+      width: 100%;
+      padding: 13px;
+      margin: 7px 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
     }
 
-    .menu {
-      margin-top: 20px;
+    .product {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 14px;
+      margin: 10px 0;
+      background: #fafafa;
     }
 
-    .menu button {
-      background: #ffffff;
+    .product strong {
+      font-size: 18px;
+    }
+
+    .price {
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    .stock {
+      color: #555;
+    }
+
+    .total {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 15px 0;
+      text-align: right;
+    }
+
+    .top-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .small {
+      font-size: 14px;
+      color: #666;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- Welcome Screen -->
-    <div id="welcome">
+  <!-- WELCOME -->
+  <div id="welcome" class="screen center">
 
-      <div class="logo">🛒</div>
+    <div class="logo">🛒</div>
 
-      <h1>Welcome to</h1>
+    <h1>Welcome to</h1>
+    <h1>Sushant Kirana</h1>
 
-      <h1>Sushant Kirana</h1>
+    <p class="subtitle">
+      Your Smart Grocery Store
+    </p>
 
-      <p class="subtitle">
-        Your Smart Grocery Store
-      </p>
+    <button onclick="showLogin()">
+      Continue
+    </button>
 
-      <button onclick="showLogin()">
-        Continue
-      </button>
-
-    </div>
-
-
-    <!-- Login Screen -->
-    <div id="login" class="hidden">
-
-      <div class="logo">👋</div>
-
-      <h1>Sushant Kirana</h1>
-
-      <p class="subtitle">
-        Select Login Type
-      </p>
-
-      <button onclick="customerLogin()">
-        👤 Customer Login
-      </button>
-
-      <button onclick="ownerLogin()">
-        🏪 Owner Login
-      </button>
-
-      <button class="back" onclick="backHome()">
-        ← Back
-      </button>
-
-    </div>
+  </div>
 
 
-    <!-- Dashboard -->
-    <div id="dashboard" class="hidden">
+  <!-- LOGIN -->
+  <div id="login" class="screen center hidden">
+
+    <div class="logo">👋</div>
+
+    <h1>Sushant Kirana</h1>
+
+    <p class="subtitle">
+      Select Login Type
+    </p>
+
+    <button onclick="customerLogin()">
+      👤 Customer Login
+    </button>
+
+    <button onclick="ownerLogin()">
+      🏪 Owner Login
+    </button>
+
+    <button class="gray" onclick="backHome()">
+      ← Back
+    </button>
+
+  </div>
+
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="screen hidden">
+
+    <div class="top-title">
 
       <div class="logo">🛍️</div>
-
-      <h1>Welcome to</h1>
 
       <h1>Sushant Kirana</h1>
 
       <p id="role" class="subtitle"></p>
 
-      <div id="customerMenu" class="menu hidden">
-
-        <button>📷 Scan / Search Product</button>
-
-        <button>🛒 My Cart</button>
-
-        <button>🧾 My Bills</button>
-
-        <button>📦 My Orders</button>
-
-      </div>
+    </div>
 
 
-      <div id="ownerMenu" class="menu hidden">
+    <!-- CUSTOMER MENU -->
 
-        <button>📷 Scan Barcode</button>
+    <div id="customerMenu" class="hidden">
 
-        <button>➕ Add Product</button>
+      <button onclick="showProducts('customer')">
+        🛒 Products
+      </button>
 
-        <button>📦 Stock Management</button>
+      <button onclick="showCart()">
+        🛍️ My Cart
+      </button>
 
-        <button>🧾 Today's Bills</button>
-
-        <button>💰 Today's Sales</button>
-
-      </div>
-
-      <button class="back" onclick="logout()">
-        Logout
+      <button onclick="showBills()">
+        🧾 My Bills
       </button>
 
     </div>
 
+
+    <!-- OWNER MENU -->
+
+    <div id="ownerMenu" class="hidden">
+
+      <button class="green" onclick="showAddProduct()">
+        ➕ Add Product
+      </button>
+
+      <button onclick="showProducts('owner')">
+        📦 Products / Stock
+      </button>
+
+      <button class="orange" onclick="showBilling()">
+        🧾 Create Bill
+      </button>
+
+      <button onclick="showSales()">
+        💰 Today's Sales
+      </button>
+
+    </div>
+
+
+    <button class="gray" onclick="logout()">
+      Logout
+    </button>
+
   </div>
 
 
-  <script>
+  <!-- ADD PRODUCT -->
 
-    function showLogin() {
+  <div id="addProduct" class="screen hidden">
 
-      document.getElementById("welcome")
-        .classList.add("hidden");
+    <h2>➕ Add Product</h2>
 
-      document.getElementById("login")
-        .classList.remove("hidden");
+    <input
+      id="productName"
+      type="text"
+      placeholder="Product Name"
+    >
+
+    <input
+      id="productBarcode"
+      type="text"
+      placeholder="Barcode Number"
+    >
+
+    <input
+      id="productPrice"
+      type="number"
+      placeholder="Price ₹"
+    >
+
+    <input
+      id="productStock"
+      type="number"
+      placeholder="Stock Quantity"
+    >
+
+    <button class="green" onclick="saveProduct()">
+      💾 Save Product
+    </button>
+
+    <button class="gray" onclick="backDashboard()">
+      ← Back
+    </button>
+
+  </div>
+
+
+  <!-- PRODUCTS -->
+
+  <div id="productsScreen" class="screen hidden">
+
+    <h2>📦 Products</h2>
+
+    <input
+      id="searchProduct"
+      type="text"
+      placeholder="🔍 Search product or barcode"
+      oninput="displayProducts()"
+    >
+
+    <div id="productsList"></div>
+
+    <button class="gray" onclick="backDashboard()">
+      ← Back
+    </button>
+
+  </div>
+
+
+  <!-- BILLING -->
+
+  <div id="billingScreen" class="screen hidden">
+
+    <h2>🧾 Create Bill</h2>
+
+    <input
+      id="billSearch"
+      type="text"
+      placeholder="Enter product name or barcode"
+      oninput="searchBillProduct()"
+    >
+
+    <div id="billSearchResults"></div>
+
+    <h3>🛒 Bill Items</h3>
+
+    <div id="billItems"></div>
+
+    <div class="total">
+      Total: ₹<span id="billTotal">0</span>
+    </div>
+
+    <button class="green" onclick="completeBill()">
+      ✅ Complete Bill
+    </button>
+
+    <button class="gray" onclick="backDashboard()">
+      ← Back
+    </button>
+
+  </div>
+
+
+  <!-- CART -->
+
+  <div id="cartScreen" class="screen hidden">
+
+    <h2>🛍️ My Cart</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="total">
+      Total: ₹<span id="cartTotal">0</span>
+    </div>
+
+    <button class="green" onclick="placeOrder()">
+      ✅ Place Order
+    </button>
+
+    <button class="gray" onclick="backDashboard()">
+      ← Back
+    </button>
+
+  </div>
+
+
+  <!-- BILLS -->
+
+  <div id="billsScreen" class="screen hidden">
+
+    <h2>🧾 Bills</h2>
+
+    <div id="billsList"></div>
+
+    <button class="gray" onclick="backDashboard()">
+      ← Back
+    </button>
+
+  </div>
+
+
+  <!-- SALES -->
+
+  <div id="salesScreen" class="screen hidden">
+
+    <h2>💰 Today's Sales</h2>
+
+    <div id="salesData"></div>
+
+    <button class="gray" onclick="backDashboard()">
+      ← Back
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  // =========================
+  // DATA
+  // =========================
+
+  let products =
+    JSON.parse(localStorage.getItem("products")) || [];
+
+  let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+  let bills =
+    JSON.parse(localStorage.getItem("bills")) || [];
+
+  let currentBill = [];
+
+
+  // =========================
+  // SCREEN CONTROL
+  // =========================
+
+  function hideAllScreens() {
+
+    document.querySelectorAll(".screen").forEach(function(screen) {
+      screen.classList.add("hidden");
+    });
+
+  }
+
+
+  function showLogin() {
+
+    hideAllScreens();
+
+    document
+      .getElementById("login")
+      .classList.remove("hidden");
+
+  }
+
+
+  function backHome() {
+
+    hideAllScreens();
+
+    document
+      .getElementById("welcome")
+      .classList.remove("hidden");
+
+  }
+
+
+  function customerLogin() {
+
+    hideAllScreens();
+
+    document
+      .getElementById("dashboard")
+      .classList.remove("hidden");
+
+    document
+      .getElementById("role")
+      .innerText = "Customer Dashboard";
+
+    document
+      .getElementById("customerMenu")
+      .classList.remove("hidden");
+
+  }
+
+
+  function ownerLogin() {
+
+    hideAllScreens();
+
+    document
+      .getElementById("dashboard")
+      .classList.remove("hidden");
+
+    document
+      .getElementById("role")
+      .innerText = "Owner Dashboard";
+
+    document
+      .getElementById("ownerMenu")
+      .classList.remove("hidden");
+
+  }
+
+
+  function logout() {
+
+    document
+      .getElementById("customerMenu")
+      .classList.add("hidden");
+
+    document
+      .getElementById("ownerMenu")
+      .classList.add("hidden");
+
+    backHome();
+
+  }
+
+
+  function backDashboard() {
+
+    hideAllScreens();
+
+    document
+      .getElementById("dashboard")
+      .classList.remove("hidden");
+
+  }
+
+
+  // =========================
+  // ADD PRODUCT
+  // =========================
+
+  function showAddProduct() {
+
+    hideAllScreens();
+
+    document
+      .getElementById("addProduct")
+      .classList.remove("hidden");
+
+  }
+
+
+  function saveProduct() {
+
+    let name =
+      document.getElementById("productName").value.trim();
+
+    let barcode =
+      document.getElementById("productBarcode").value.trim();
+
+    let price =
+      Number(document.getElementById("productPrice").value);
+
+    let stock =
+      Number(document.getElementById("productStock").value);
+
+
+    if (!name || !barcode || !price || stock < 0) {
+
+      alert("⚠️ Please enter all product details.");
+
+      return;
+
     }
 
 
-    function customerLogin() {
+    let existing =
+      products.find(function(product) {
+        return product.barcode === barcode;
+      });
 
-      document.getElementById("login")
-        .classList.add("hidden");
 
-      document.getElementById("dashboard")
-        .classList.remove("hidden");
+    if (existing) {
 
-      document.getElementById("role")
-        .innerText = "Customer Dashboard";
+      alert("⚠️ This barcode already exists.");
 
-      document.getElementById("customerMenu")
-        .classList.remove("hidden");
+      return;
+
     }
 
 
-    function ownerLogin() {
+    products.push({
 
-      document.getElementById("login")
-        .classList.add("hidden");
+      id: Date.now(),
 
-      document.getElementById("dashboard")
-        .classList.remove("hidden");
+      name: name,
 
-      document.getElementById("role")
-        .innerText = "Owner Dashboard";
+      barcode: barcode,
 
-      document.getElementById("ownerMenu")
-        .classList.remove("hidden");
+      price: price,
+
+      stock: stock
+
+    });
+
+
+    localStorage.setItem(
+      "products",
+      JSON.stringify(products)
+    );
+
+
+    document.getElementById("productName").value = "";
+    document.getElementById("productBarcode").value = "";
+    document.getElementById("productPrice").value = "";
+    document.getElementById("productStock").value = "";
+
+
+    alert("✅ Product saved successfully!");
+
+    backDashboard();
+
+  }
+
+
+  // =========================
+  // PRODUCTS
+  // =========================
+
+  function showProducts() {
+
+    hideAllScreens();
+
+    document
+      .getElementById("productsScreen")
+      .classList.remove("hidden");
+
+    displayProducts();
+
+  }
+
+
+  function displayProducts() {
+
+    let search =
+      document
+        .getElementById("searchProduct")
+        .value
+        .toLowerCase();
+
+
+    let list =
+      document.getElementById("productsList");
+
+    list.innerHTML = "";
+
+
+    let filtered =
+      products.filter(function(product) {
+
+        return (
+          product.name.toLowerCase().includes(search) ||
+          product.barcode.toLowerCase().includes(search)
+        );
+
+      });
+
+
+    if (filtered.length === 0) {
+
+      list.innerHTML =
+        "<p class='small'>No products found.</p>";
+
+      return;
+
     }
 
 
-    function backHome() {
+    filtered.forEach(function(product) {
 
-      document.getElementById("login")
-        .classList.add("hidden");
+      let div =
+        document.createElement("div");
 
-      document.getElementById("welcome")
-        .classList.remove("hidden");
+      div.className = "product";
+
+
+      div.innerHTML = `
+
+        <strong>${product.name}</strong>
+
+        <br>
+
+        Barcode:
+        ${product.barcode}
+
+        <br>
+
+        <span class="price">
+          ₹${product.price}
+        </span>
+
+        <br>
+
+        <span class="stock">
+          Stock: ${product.stock}
+        </span>
+
+        <br>
+
+        <button
+          class="red"
+          onclick="deleteProduct(${product.id})">
+          🗑️ Delete
+        </button>
+
+      `;
+
+
+      list.appendChild(div);
+
+    });
+
+  }
+
+
+  function deleteProduct(id) {
+
+    if (!confirm("Delete this product?")) {
+      return;
     }
 
 
-    function logout() {
+    products =
+      products.filter(function(product) {
+        return product.id !== id;
+      });
 
-      document.getElementById("dashboard")
-        .classList.add("hidden");
 
-      document.getElementById("customerMenu")
-        .classList.add("hidden");
+    localStorage.setItem(
+      "products",
+      JSON.stringify(products)
+    );
 
-      document.getElementById("ownerMenu")
-        .classList.add("hidden");
 
-      document.getElementById("welcome")
-        .classList.remove("hidden");
+    displayProducts();
+
+  }
+
+
+  // =========================
+  // BILLING
+  // =========================
+
+  function showBilling() {
+
+    hideAllScreens();
+
+    currentBill = [];
+
+    document
+      .getElementById("billingScreen")
+      .classList.remove("hidden");
+
+    document.getElementById("billSearch").value = "";
+
+    displayBill();
+
+  }
+
+
+  function searchBillProduct() {
+
+    let search =
+      document
+        .getElementById("billSearch")
+        .value
+        .toLowerCase();
+
+
+    let result =
+      document.getElementById("billSearchResults");
+
+    result.innerHTML = "";
+
+
+    if (!search) {
+      return;
     }
 
-  </script>
+
+    let found =
+      products.filter(function(product) {
+
+        return (
+          product.name.toLowerCase().includes(search) ||
+          product.barcode.toLowerCase().includes(search)
+        );
+
+      });
+
+
+    found.forEach(function(product) {
+
+      let button =
+        document.createElement("button");
+
+
+      button.innerText =
+        product.name +
+        " - ₹" +
+        product.price +
+        " | Stock: " +
+        product.stock;
+
+
+      button.onclick = function() {
+
+        addToBill(product.id);
+
+      };
+
+
+      result.appendChild(button);
+
+    });
+
+  }
+
+
+  function addToBill(id) {
+
+    let product =
+      products.find(function(product) {
+        return product.id === id;
+      });
+
+
+    if (!product) return;
+
+
+    if (product.stock <= 0) {
+
+      alert("❌ Product is out of stock.");
+
+      return;
+
+    }
+
+
+    let item =
+      currentBill.find(function(item) {
+        return item.id === id;
+      });
+
+
+    if (item) {
+
+      if (item.quantity >= product.stock) {
+
+        alert("❌ Not enough stock.");
+
+        return;
+
+      }
+
+      item.quantity++;
+
+    } else {
+
+      currentBill.push({
+
+        id: product.id,
+
+        name: product.name,
+
+        price: product.price,
+
+        quantity: 1
+
+      });
+
+    }
+
+
+    displayBill();
+
+  }
+
+
+  function displayBill() {
+
+    let container =
+      document.getElementById("billItems");
+
+    container.innerHTML = "";
+
+
+    let total = 0;
+
+
+    currentBill.forEach(function(item, index) {
+
+      let amount =
+        item.price * item.quantity;
+
+      total += amount;
+
+
+      let div =
+        document.createElement("div");
+
+      div.className = "product";
+
+
+      div.innerHTML = `
+
+        <strong>${item.name}</strong>
+
+        <br>
+
+        ₹${item.price} × ${item.quantity}
+
+        = ₹${amount}
+
+        <br>
+
+        <button
+          class="red"
+          onclick="removeBillItem(${index})">
+          Remove
+        </button>
+
+      `;
+
+
+      container.appendChild(div);
+
+    });
+
+
+    document
+      .getElementById("billTotal")
+      .innerText = total;
+
+  }
+
+
+  function removeBillItem(index) {
+
+    currentBill.splice(index, 1);
+
+    displayBill();
+
+  }
+
+
+  function completeBill() {
+
+    if (currentBill.length === 0) {
+
+      alert("⚠️ Bill is empty.");
+
+      return;
+
+    }
+
+
+    let total = 0;
+
+
+    currentBill.forEach(function(item) {
+
+      total +=
+        item.price * item.quantity;
+
+
+      let product =
+        products.find(function(product) {
+          return product.id === item.id;
+        });
+
+
+      if (product) {
+
+        product.stock -= item.quantity;
+
+      }
+
+    });
+
+
+    let bill = {
+
+      id: Date.now(),
+
+      date: new Date().toLocaleString(),
+
+      items: currentBill,
+
+      total: total
+
+    };
+
+
+    bills.push(bill);
+
+
+    localStorage.setItem(
+      "products",
+      JSON.stringify(products)
+    );
+
+
+    localStorage.setItem(
+      "bills",
+      JSON.stringify(bills)
+    );
+
+
+    alert(
+      "✅ Bill completed!\nTotal: ₹" + total
+    );
+
+
+    currentBill = [];
+
+    showBilling();
+
+  }
+
+
+  // =========================
+  // CUSTOMER CART
+  // =========================
+
+  function showCart() {
+
+    hideAllScreens();
+
+    document
+      .getElementById("cartScreen")
+      .classList.remove("hidden");
+
+    displayCart();
+
+  }
+
+
+  function addToCart(id) {
+
+    let product =
+      products.find(function(product) {
+        return product.id === id;
+      });
+
+
+    if (!product || product.stock <= 0) {
+
+      alert("❌ Product unavailable.");
+
+      return;
+
+    }
+
+
+    cart.push({
+
+      id: product.id,
+
+      name: product.name,
+
+      price: product.price
+
+    });
+
+
+    localStorage.setItem(
+      "cart",
+      JSON.stringify(cart)
+    );
+
+
+    alert("🛒 Added to cart!");
+
+  }
+
+
+  function displayCart() {
+
+    let container =
+      document.getElementById("cartItems");
+
+    container.innerHTML = "";
+
+
+    let total = 0;
+
+
+    cart.forEach(function(item, index) {
+
+      total += item.price;
+
+
+      let div =
+        document.createElement("div");
+
+      div.className = "product";
+
+
+      div.innerHTML = `
+
+        <strong>${item.name}</strong>
+
+        <br>
+
+        ₹${item.price}
+
+        <button
+          class="red"
+          onclick="removeCart(${index})">
+          Remove
+        </button>
+
+      `;
+
+
+      container.appendChild(div);
+
+    });
+
+
+    document
+      .getElementById("cartTotal")
+      .innerText = total;
+
+  }
+
+
+  function removeCart(index) {
+
+    cart.splice(index, 1);
+
+    localStorage.setItem(
+      "cart",
+      JSON.stringify(cart)
+    );
+
+    displayCart();
+
+  }
+
+
+  function placeOrder() {
+
+    if (cart.length === 0) {
+
+      alert("🛒 Cart is empty.");
+
+      return;
+
+    }
+
+
+    alert("✅ Order placed successfully!");
+
+    cart = [];
+
+
+    localStorage.setItem(
+      "cart",
+      JSON.stringify(cart)
+    );
+
+
+    displayCart();
+
+  }
+
+
+  // =========================
+  // BILLS
+  // =========================
+
+  function showBills() {
+
+    hideAllScreens();
+
+    document
+      .getElementById("billsScreen")
+      .classList.remove("hidden");
+
+
+    let container =
+      document.getElementById("billsList");
+
+    container.innerHTML = "";
+
+
+    if (bills.length === 0) {
+
+      container.innerHTML =
+        "<p>No bills available.</p>";
+
+      return;
+
+    }
+
+
+    bills.forEach(function(bill) {
+
+      let div =
+        document.createElement("div");
+
+      div.className = "product";
+
+
+      div.innerHTML = `
+
+        <strong>Bill #${bill.id}</strong>
+
+        <br>
+
+        ${bill.date}
+
+        <br>
+
+        <span class="price">
+          Total: ₹${bill.total}
+        </span>
+
+      `;
+
+
+      container.appendChild(div);
+
+    });
+
+  }
+
+
+  // =========================
+  // SALES
+  // =========================
+
+  function showSales() {
+
+    hideAllScreens();
+
+    document
+      .getElementById("salesScreen")
+      .classList.remove("hidden");
+
+
+    let totalSales = 0;
+
+
+    bills.forEach(function(bill) {
+
+      totalSales += bill.total;
+
+    });
+
+
+    document
+      .getElementById("salesData")
+      .innerHTML = `
+
+        <div class="product">
+
+          <h2>💰 ₹${totalSales}</h2>
+
+          <p>Total Sales</p>
+
+          <p>
+            Total Bills: ${bills.length}
+          </p>
+
+        </div>
+
+      `;
+
+  }
+
+
+  // =========================
+  // START
+  // =========================
+
+  hideAllScreens();
+
+  document
+    .getElementById("welcome")
+    .classList.remove("hidden");
+
+</script>
 
 </body>
 </html>
