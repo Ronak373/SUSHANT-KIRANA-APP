@@ -131,7 +131,7 @@
         🏪 Owner Login
       </button>
 
-      <button class="back" onclick="backHome()">
+      <button class="back" onClick="backHome()">
         ← Back
       </button>
 
@@ -167,6 +167,7 @@
         <button>📷 Scan Barcode</button>
 
         <button>➕ Add Product</button>
+        <button onclick="addProduct()">➕ Add Product</button>
 
         <button>📦 Stock Management</button>
 
@@ -253,7 +254,28 @@
       document.getElementById("welcome")
         .classList.remove("hidden");
     }
+function addProduct() {
+  let name = prompt("Product name:");
+  if (!name) return;
 
+  let price = prompt("Product price:");
+  if (!price) return;
+
+  let stock = prompt("Product stock:");
+  if (!stock) return;
+
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+
+  products.push({
+    name: name,
+    price: Number(price),
+    stock: Number(stock)
+  });
+
+  localStorage.setItem("products", JSON.stringify(products));
+
+  alert("✅ Product added successfully!");
+}
   </script>
 
 </body>
