@@ -354,6 +354,7 @@ Choose Option
 <button class="orange" onclick="openUdharBook()">
 📒 Udhar
 </button>
+  
   <button onclick="openCustomerLogin()">
 👤 Customer Login
   </button>
@@ -400,48 +401,7 @@ Sushant Kirana
     maxlength="10"
     placeholder="10 digit Mobile Number">
 
-  <div id="recaptcha-container"></div>
-
-  <button
-    onclick="sendCustomerOTP()">
-
-    📲 Send OTP
-
-  </button>
-
-  <div id="customerOtpBox" class="hidden">
-
-    <input
-      id="customerOTP"
-      type="text"
-      maxlength="6"
-      inputmode="numeric"
-      placeholder="Enter 6 Digit OTP">
-
-    <button
-      class="green"
-      onclick="verifyCustomerOTP()">
-
-      ✅ Verify OTP
-
-    </button>
-
-  </div>
-
-  <p
-    id="otpStatus"
-    class="small">
-  </p>
-
-  <button
-    class="gray"
-    onclick="showScreen('login')">
-
-    ← Back
-
-  </button>
-
-</div>
+  
 
 
 <!-- CUSTOMER DASHBOARD -->
@@ -524,6 +484,48 @@ Sushant Kirana
 <button class="gray" onclick="logout()">
 Logout
 </button>
+
+</div>
+    <div id="recaptcha-container"></div>
+
+  <button
+    onclick="sendCustomerOTP()">
+
+    📲 Send OTP
+
+  </button>
+
+  <div id="customerOtpBox" class="hidden">
+
+    <input
+      id="customerOTP"
+      type="text"
+      maxlength="6"
+      inputmode="numeric"
+      placeholder="Enter 6 Digit OTP">
+
+    <button
+      class="green"
+      onclick="verifyCustomerOTP()">
+
+      ✅ Verify OTP
+
+    </button>
+
+  </div>
+
+  <p
+    id="otpStatus"
+    class="small">
+  </p>
+
+  <button
+    class="gray"
+    onclick="showScreen('login')">
+
+    ← Back
+
+  </button>
 
 </div>
 
